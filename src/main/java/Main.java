@@ -8,9 +8,9 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         TableStructure tableStructure = new TableStructure(
-                List.of(new Column(ColumnType.VARCHAR, "testVarchar"),
-                        new Column(ColumnType.INT, "testInt"),
-                        new Column(ColumnType.DATE, "testDate")
+                List.of(new Column(ColumnType.VARCHAR, "te       stVarchar"),
+                        new Column(ColumnType.INT, "artytestInt"),
+                        new Column(ColumnType.DATE, "sdftestDateпроп         одроорпорп")
                 )
         );
 
