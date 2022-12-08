@@ -13,16 +13,16 @@ public class TableDrawer {
     public void draw(TableStructure table) {
         var columns = table.getColumnList();
         Map<String, Integer> space = getColumnsSize(table);
-//        System.out.println(getBorder(table));
-        System.out.print("║");
+        System.out.println(getUpHeaderBorder(space));
         for (int i = 0; i < columns.size(); i++) {
+            System.out.print("║");
             var name = columns.get(i).getName();
             System.out.print(setSpaceCenter(name, space.get(name)));
-            if (i != columns.size() - 1) {
-                System.out.print("║");
+            if (i == columns.size() - 1) {
+                System.out.println("║");
             }
         }
-        System.out.print("║");
+        System.out.println(getBottomHeaderBorder(space));
     }
 
     private Map<String, Integer> getColumnsSize(TableStructure table) {
@@ -31,12 +31,40 @@ public class TableDrawer {
             int width = calculateTableColumnSize(column.getName());
             spaces.put(column.getName(), width);
         }
+
         return spaces;
     }
 
     private String setSpace(String value, int width) {
         var returnedString = " ".repeat(Math.max(0, width - value.length()));
+
         return returnedString + value;
+    }
+
+    private String getUpHeaderBorder(Map<String, Integer> values) {
+
+        return getBorderByPattern(values, "╔", "═", "╦", "╗");
+    }
+
+    private String getBottomHeaderBorder(Map<String, Integer> values) {
+
+        return getBorderByPattern(values, "╠", "═", "╬", "╣");
+    }
+
+    private String getBorderByPattern(Map<String, Integer> values, String leftSymbol, String centerSymbol, String delimiterSymbol, String rightSymbol) {
+        StringBuilder border = new StringBuilder(leftSymbol);
+        int i = 0;
+        for (var columnName : values.keySet()) {
+            int size = values.get(columnName);
+            border.append(centerSymbol.repeat(Math.max(0, size)));
+            if (i != values.size() - 1) {
+                border.append(delimiterSymbol);
+            }
+            i++;
+        }
+        border.append(rightSymbol);
+
+        return border.toString();
     }
 
     private String setSpaceCenter(String value, int width) {
@@ -44,6 +72,7 @@ public class TableDrawer {
         var returnedString = spaceAround;
         returnedString += value;
         returnedString += spaceAround;
+
         return returnedString;
     }
 
