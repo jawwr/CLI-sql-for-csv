@@ -1,10 +1,11 @@
 package core.drawUtils;
 
 import core.structure.Column;
-import core.structure.TableStructure;
+import core.structure.Table;
 import core.utils.Tuple;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TableDrawer {
@@ -12,10 +13,30 @@ public class TableDrawer {
 
     }
 
-    public void draw(TableStructure table) {
-        var columns = table.getColumnList();
+    public void draw(Table table) {
+        var columns = table.getStructure().getColumnList();
         List<Tuple<String, Integer>> space = getColumnsSize(table);
         drawHeader(columns, space);
+        drawValues(table.getValues(), space);
+    }
+
+    private void drawValues(String[][] values, List<Tuple<String, Integer>> space) {
+        for (int i = 0; i < values.length; i++) {
+            for (int j = 0; j < values[i].length; j++) {
+                int width = space.get(j).second();
+                System.out.print("║");
+                System.out.print(setSpace(values[i][j], width));
+                if (j == values[i].length - 1) {
+                    System.out.println("║");
+                }
+            }
+            if (i != values.length - 1) {
+                var border = getBorderByPattern(space, "╠", "═", "╬", "╣");
+                System.out.println(border);
+            }
+        }
+        var border = getBorderByPattern(space, "╚", "═", "╩", "╝");
+        System.out.println(border);
     }
 
     private void drawHeader(List<Column> columns, List<Tuple<String, Integer>> space) {
@@ -31,14 +52,26 @@ public class TableDrawer {
         System.out.println(getBottomHeaderBorder(space));
     }
 
-    private List<Tuple<String, Integer>> getColumnsSize(TableStructure table) {
+    private List<Tuple<String, Integer>> getColumnsSize(Table table) {
         List<Tuple<String, Integer>> spaces = new ArrayList<>();
-        for (var column : table.getColumnList()) {
-            int width = calculateTableColumnSize(column.getName());
+        for (int i = 0; i < table.getStructure().getColumnList().size(); i++) {
+            var column = table.getStructure().getColumnList().get(i);
+            var columnValue = table.getValues();
+            int width = Math.max(column.getName().length() + 2, getMaxValueSizeInColumn(columnValue, i) + 2);// calculateTableColumnSize(column.getName());
             spaces.add(new Tuple<>(column.getName(), width));
         }
 
         return spaces;
+    }
+
+    private int getMaxValueSizeInColumn(String[][] columnValue, int index) {
+        int max = 0;
+        for (String[] value : columnValue) {
+            if (value[index].length() > max){
+                max = value[index].length();
+            }
+        }
+        return (max ^ 1) != 0 ? max - 1 : max;
     }
 
     private String setSpace(String value, int width) {
