@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TableDrawer {
-    public void draw() {
-
-    }
-
     public void draw(Table table) {
         var columns = table.getStructure().getColumnList();
         List<Tuple<String, Integer>> space = getColumnsSize(table);
@@ -114,9 +110,5 @@ public class TableDrawer {
         returnedString += spaceAround;
 
         return returnedString;
-    }
-
-    private int calculateTableColumnSize(String name) {
-        return name.length() + 2;
     }
 }
