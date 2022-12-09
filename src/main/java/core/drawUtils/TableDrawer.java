@@ -5,7 +5,6 @@ import core.structure.Table;
 import core.utils.Tuple;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class TableDrawer {
@@ -31,16 +30,16 @@ public class TableDrawer {
                 }
             }
             if (i != values.length - 1) {
-                var border = getBorderByPattern(space, "╠", "═", "╬", "╣");
+                var border = getBetweenBorder(space);
                 System.out.println(border);
             }
         }
-        var border = getBorderByPattern(space, "╚", "═", "╩", "╝");
+        var border = getBottomBorder(space);
         System.out.println(border);
     }
 
     private void drawHeader(List<Column> columns, List<Tuple<String, Integer>> space) {
-        System.out.println(getUpHeaderBorder(space));
+        System.out.println(getUpBorder(space));
         for (int i = 0; i < columns.size(); i++) {
             System.out.print("║");
             var name = columns.get(i).getName();
@@ -49,7 +48,7 @@ public class TableDrawer {
                 System.out.println("║");
             }
         }
-        System.out.println(getBottomHeaderBorder(space));
+        System.out.println(getBetweenBorder(space));
     }
 
     private List<Tuple<String, Integer>> getColumnsSize(Table table) {
@@ -67,7 +66,7 @@ public class TableDrawer {
     private int getMaxValueSizeInColumn(String[][] columnValue, int index) {
         int max = 0;
         for (String[] value : columnValue) {
-            if (value[index].length() > max){
+            if (value[index].length() > max) {
                 max = value[index].length();
             }
         }
@@ -80,14 +79,16 @@ public class TableDrawer {
         return returnedString + value;
     }
 
-    private String getUpHeaderBorder(List<Tuple<String, Integer>> values) {
-
+    private String getUpBorder(List<Tuple<String, Integer>> values) {
         return getBorderByPattern(values, "╔", "═", "╦", "╗");
     }
 
-    private String getBottomHeaderBorder(List<Tuple<String, Integer>> values) {
-
+    private String getBetweenBorder(List<Tuple<String, Integer>> values) {
         return getBorderByPattern(values, "╠", "═", "╬", "╣");
+    }
+
+    private String getBottomBorder(List<Tuple<String, Integer>> values) {
+        return getBorderByPattern(values, "╚", "═", "╩", "╝");
     }
 
     private String getBorderByPattern(List<Tuple<String, Integer>> values, String leftSymbol, String centerSymbol, String delimiterSymbol, String rightSymbol) {
