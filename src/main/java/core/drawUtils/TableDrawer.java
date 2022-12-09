@@ -66,7 +66,7 @@ public class TableDrawer {
                 max = value[index].length();
             }
         }
-        return (max ^ 1) != 0 ? max - 1 : max;
+        return (max ^ 1) != 0 ? max + 1 : max;
     }
 
     private String setSpace(String value, int width) {
@@ -104,8 +104,9 @@ public class TableDrawer {
     }
 
     private String setSpaceCenter(String value, int width) {
-        String spaceAround = " ".repeat(Math.max(0, (width - value.length()) / 2));
-        var returnedString = spaceAround;
+        int widthWithoutSpace = width - value.length() - 2;
+        var spaceAround = " ".repeat(Math.max(0, (width - value.length()) / 2));
+        var returnedString = (widthWithoutSpace % 2) == 0 ? spaceAround : spaceAround + " ";
         returnedString += value;
         returnedString += spaceAround;
 

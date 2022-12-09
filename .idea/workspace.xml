@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3508496a-680f-4fc2-a390-173976607910" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/fileWorker/FileReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/fileWorker/FileWorker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/fileWorker/FileWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/fileWorker/Reader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/fileWorker/Writer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test files/countries.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/drawUtils/TableDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/drawUtils/TableDrawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/interpreter/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/interpreter/Interpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test files/countries.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test files/countries.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,9 +103,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/core/fileWorker/FileWorker.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/src/main/java/core/drawUtils/TableDrawer.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

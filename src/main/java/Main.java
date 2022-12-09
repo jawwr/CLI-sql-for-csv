@@ -1,14 +1,6 @@
-import core.drawUtils.TableDrawer;
-import core.fileWorker.FileWorker;
-import core.fileWorker.Reader;
 import core.interpreter.SqlInterpreter;
-import core.structure.Column;
-import core.structure.ColumnType;
-import core.structure.Table;
-import core.structure.TableStructure;
 
 import java.io.File;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -32,7 +24,6 @@ public class Main {
 
         SqlInterpreter interpreter = new SqlInterpreter(new File("").getAbsolutePath() + "\\test files");
         interpreter.interpret("");
-
 
 
 //        TableDrawer drawer = new TableDrawer();
