@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TableDrawer {
     public void draw(Table table) {
-        var columns = table.getStructure().getColumnList();
+        var columns = table.getStructure().columnList();
         List<Tuple<String, Integer>> space = getColumnsSize(table);
         drawHeader(columns, space);
         drawValues(table.getValues(), space);
@@ -49,8 +49,8 @@ public class TableDrawer {
 
     private List<Tuple<String, Integer>> getColumnsSize(Table table) {
         List<Tuple<String, Integer>> spaces = new ArrayList<>();
-        for (int i = 0; i < table.getStructure().getColumnList().size(); i++) {
-            var column = table.getStructure().getColumnList().get(i);
+        for (int i = 0; i < table.getStructure().columnList().size(); i++) {
+            var column = table.getStructure().columnList().get(i);
             var columnValue = table.getValues();
             int width = Math.max(column.getName().length() + 2, getMaxValueSizeInColumn(columnValue, i) + 2);// calculateTableColumnSize(column.getName());
             spaces.add(new Tuple<>(column.getName(), width));

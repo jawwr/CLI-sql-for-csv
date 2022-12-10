@@ -16,7 +16,7 @@ public class FileWorker {
         this.writer = new Writer(directory);
     }
 
-    public String[][] readFile(String fileName){
+    public String[][] readFile(String fileName) {
         var values = this.reader.readFile(fileName);
         String[][] tableValues = new String[values.length][];
         for (int i = 0; i < values.length; i++) {

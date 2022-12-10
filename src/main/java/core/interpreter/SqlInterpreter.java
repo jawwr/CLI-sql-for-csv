@@ -22,7 +22,7 @@ public class SqlInterpreter implements Interpreter {
 
     @Override
     public void interpret(String query) {
-        var fileValue = worker.readFile("countries.csv");
+        var fileValue = worker.readFile("countries.csv");//TODO
 
         TableStructure structure = new TableStructure(getColumn(fileValue[0]));
         Table table = new Table(structure);
