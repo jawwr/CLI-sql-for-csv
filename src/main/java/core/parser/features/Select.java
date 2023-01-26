@@ -2,9 +2,11 @@ package core.parser.features;
 
 import core.structure.Table;
 
-public class Select implements Feature{
+import java.util.List;
+
+public class Select implements Feature {
     @Override
-    public Table work(String query, Table table) {
+    public Table parse(List<String> args, Table table) {
         return null;//TODO
     }
 }
