@@ -1,3 +1,4 @@
+import core.interpreter.Interpreter;
 import core.interpreter.SqlInterpreter;
 
 import java.io.File;
@@ -22,8 +23,9 @@ public class Main {
 //        fileWorker.readFile("");
 
 
-        SqlInterpreter interpreter = new SqlInterpreter(new File("").getAbsolutePath() + "\\test files");
-        interpreter.interpret("");
+        String s = new File("").getAbsolutePath() + "\\test files";
+        Interpreter interpreter = new SqlInterpreter(new File("").getAbsolutePath() + "\\test files");//TODO переделать на считывание файла по имени
+        interpreter.interpret("select all from this");
 
 
 //        TableDrawer drawer = new TableDrawer();

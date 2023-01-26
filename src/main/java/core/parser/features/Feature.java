@@ -1,6 +1,8 @@
 package core.parser.features;
 
-public enum Feature {
-    select,
-    from
+import core.structure.Table;
+
+@FunctionalInterface
+public interface Feature {
+    Table work(String query, Table table);
 }

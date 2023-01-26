@@ -25,10 +25,10 @@ public class SqlInterpreter implements Interpreter {
         var fileValue = worker.readFile("countries.csv");//TODO
 
         TableStructure structure = new TableStructure(getColumn(fileValue[0]));
-        Table table = new Table(structure);
-        table.setValues(getTableValues(fileValue));
+        Table allTable = new Table(structure);
+        allTable.setValues(getTableValues(fileValue));
 
-        drawer.draw(table);
+        drawer.draw(allTable);
     }
 
     private String[][] getTableValues(String[][] allValues) {
@@ -43,7 +43,7 @@ public class SqlInterpreter implements Interpreter {
     private List<Column> getColumn(String[] columns) {
         List<Column> columnList = new ArrayList<>();
         for (String columnValues : columns) {
-            Column column = new Column(ColumnType.VARCHAR, columnValues);//TODO сделать проверку на то, какие типы данных могут быть
+            Column column = new Column(ColumnType.VARCHAR, columnValues);//TODO (?) сделать проверку на то, какие типы данных могут быть
             columnList.add(column);
         }
 
