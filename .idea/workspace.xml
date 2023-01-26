@@ -8,8 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/FeatureType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/FeatureType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Feature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Feature.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/From.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/From.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Select.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Select.java" afterDir="false" />
     </list>
@@ -91,7 +89,7 @@
       <workItem from="1671453048141" duration="8000" />
       <workItem from="1671637175811" duration="598000" />
       <workItem from="1674738695162" duration="3650000" />
-      <workItem from="1674757471855" duration="2489000" />
+      <workItem from="1674757471855" duration="6371000" />
     </task>
     <servers />
   </component>
@@ -111,5 +109,21 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/core/drawUtils/TableDrawer.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/core/drawUtils/TableDrawer.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

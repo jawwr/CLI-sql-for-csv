@@ -1,21 +1,14 @@
 package core.interpreter;
 
 import core.drawUtils.TableDrawer;
-import core.fileWorker.FileWorker;
 import core.parser.FeatureType;
-import core.structure.Column;
-import core.structure.ColumnType;
-import core.structure.Table;
-import core.structure.TableStructure;
 
 import java.util.*;
 
 public class SqlInterpreter implements Interpreter {
-    private final FileWorker worker;
     private final TableDrawer drawer;
 
     public SqlInterpreter(String path) {
-        this.worker = new FileWorker(path);
         drawer = new TableDrawer();
     }
 
@@ -23,19 +16,15 @@ public class SqlInterpreter implements Interpreter {
     public void interpret(String query) {
         Map<FeatureType, List<String>> splitQuery = splitQuery(query);
 
-        var args = splitQuery.get(FeatureType.FROM);
-        var table =  FeatureType.FROM.getFeature().parse(args, null);
+        var fromArgs = splitQuery.get(FeatureType.FROM);
+        var table = FeatureType.FROM.getFeature().parse(fromArgs, null);
 
-//        Table table = null;
-//        for (var subQuery : splitQuery.keySet()){
-//            var args = splitQuery.get(subQuery);
-//            table = subQuery.getFeature().parse(args, table);
-//        }
-//        var fileValue = worker.readFile("countries.csv");//TODO
-//
-//        TableStructure structure = new TableStructure(getColumn(fileValue[0]));
-//        Table allTable = new Table(structure);
-//        allTable.setValues(getTableValues(fileValue));
+        splitQuery.remove(FeatureType.FROM);
+
+        for (var subQuery : splitQuery.keySet()) {
+            var args = splitQuery.get(subQuery);
+            table = subQuery.getFeature().parse(args, table);
+        }
         drawer.draw(table);
     }
 
@@ -66,23 +55,4 @@ public class SqlInterpreter implements Interpreter {
             return false;
         }
     }
-
-//    private String[][] getTableValues(String[][] allValues) {
-//        var values = Arrays.stream(allValues).skip(1).toArray();
-//        String[][] tableValues = new String[values.length][];
-//        for (int i = 0; i < values.length; i++) {
-//            tableValues[i] = (String[]) values[i];
-//        }
-//        return tableValues;
-//    }
-//
-//    private List<Column> getColumn(String[] columns) {
-//        List<Column> columnList = new ArrayList<>();
-//        for (String columnValues : columns) {
-//            Column column = new Column(ColumnType.VARCHAR, columnValues);//TODO (?) сделать проверку на то, какие типы данных могут быть
-//            columnList.add(column);
-//        }
-//
-//        return columnList;
-//    }
 }

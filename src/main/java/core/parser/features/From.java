@@ -16,7 +16,7 @@ public class From implements Feature {
 
     @Override
     public Table parse(List<String> args, Table table) {
-        var fileValue = worker.readFile(args.get(0) + ".csv");//TODO
+        var fileValue = worker.readFile(args.get(0) + ".csv");
 
         TableStructure structure = new TableStructure(getColumn(fileValue[0]));
         Table allTable = new Table(structure);
