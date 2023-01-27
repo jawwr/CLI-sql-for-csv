@@ -3,10 +3,12 @@ package core.parser;
 import core.parser.features.Feature;
 import core.parser.features.From;
 import core.parser.features.Select;
+import core.parser.features.Where;
 
 public enum FeatureType {
-    SELECT("select", new Select()),
-    FROM("from", new From());
+    FROM("from", new From()),
+    WHERE("where", new Where()),
+    SELECT("select", new Select());
     private final String queryName;
     private final Feature feature;
 

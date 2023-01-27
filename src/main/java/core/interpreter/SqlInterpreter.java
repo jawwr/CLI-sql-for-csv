@@ -2,6 +2,8 @@ package core.interpreter;
 
 import core.drawUtils.TableDrawer;
 import core.parser.FeatureType;
+import core.parser.features.From;
+import core.structure.Table;
 
 import java.util.*;
 
@@ -16,11 +18,7 @@ public class SqlInterpreter implements Interpreter {
     public void interpret(String query) {
         Map<FeatureType, List<String>> splitQuery = splitQuery(query);
 
-        var fromArgs = splitQuery.get(FeatureType.FROM);
-        var table = FeatureType.FROM.getFeature().parse(fromArgs, null);
-
-        splitQuery.remove(FeatureType.FROM);
-
+        Table table = null;
         for (var subQuery : splitQuery.keySet()) {
             var args = splitQuery.get(subQuery);
             table = subQuery.getFeature().parse(args, table);
@@ -33,7 +31,7 @@ public class SqlInterpreter implements Interpreter {
                 .filter(x -> !x.isEmpty())
                 .toList();
 
-        Map<FeatureType, List<String>> splitQuery = new HashMap<>();
+        Map<FeatureType, List<String>> splitQuery = new TreeMap<>();
         FeatureType currentFeature = null;
         for (var word : subQuery) {
             if (isFeatureType(word)) {

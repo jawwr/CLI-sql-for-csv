@@ -6,13 +6,16 @@ import core.structure.ColumnType;
 import core.structure.Table;
 import core.structure.TableStructure;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class From implements Feature {
-    private final FileWorker worker = new FileWorker(new File("").getAbsolutePath() + "\\test files");//TODO сделать по аргументам
+    private static FileWorker worker;//TODO сделать по аргументам
+
+    public static void setPath(String path) {
+        From.worker = new FileWorker(path);
+    }
 
     @Override
     public Table parse(List<String> args, Table table) {

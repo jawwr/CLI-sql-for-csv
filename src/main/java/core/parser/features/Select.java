@@ -59,7 +59,7 @@ public class Select implements Feature {
 
     private int getColumnIndex(Table table, String name) {
         var columns = table.getStructure().columnList();
-        var column = columns.stream().filter(x -> x.getName().equals(name)).findFirst().get();
+        var column = columns.stream().filter(x -> x.getName().equalsIgnoreCase(name)).findFirst().get();
 
         return columns.indexOf(column);
     }
