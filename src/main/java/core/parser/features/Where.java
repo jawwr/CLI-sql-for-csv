@@ -16,6 +16,7 @@ public class Where implements Feature {
             var operation = args.get(i + 1);
             if (isAvailableOperations(operation)) {
                 values = filter(table, operation, args.get(i), args.get(i + 2));
+                i ++;
             }
 
             if (operation.equalsIgnoreCase("or")) {
