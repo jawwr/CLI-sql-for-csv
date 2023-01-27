@@ -2,7 +2,6 @@ package core.interpreter;
 
 import core.drawUtils.TableDrawer;
 import core.parser.FeatureType;
-import core.parser.features.From;
 import core.structure.Table;
 
 import java.util.*;
@@ -10,7 +9,7 @@ import java.util.*;
 public class SqlInterpreter implements Interpreter {
     private final TableDrawer drawer;
 
-    public SqlInterpreter(String path) {
+    public SqlInterpreter() {
         drawer = new TableDrawer();
     }
 
