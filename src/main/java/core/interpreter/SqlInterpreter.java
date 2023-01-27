@@ -7,11 +7,6 @@ import core.structure.Table;
 import java.util.*;
 
 public class SqlInterpreter implements Interpreter {
-    private final TableDrawer drawer;
-
-    public SqlInterpreter() {
-        drawer = new TableDrawer();
-    }
 
     @Override
     public void interpret(String query) {
@@ -22,7 +17,7 @@ public class SqlInterpreter implements Interpreter {
             var args = splitQuery.get(subQuery);
             table = subQuery.getFeature().parse(args, table);
         }
-        drawer.draw(table);
+        TableDrawer.draw(table);
     }
 
     private Map<FeatureType, List<String>> splitQuery(String query) {

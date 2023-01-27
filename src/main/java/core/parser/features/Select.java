@@ -33,6 +33,13 @@ public class Select implements Feature {
     }
 
     private List<Integer> findColumnsIndexes(List<String> args, Table table) {
+        if (args.get(0).equals("*")) {
+            List<Integer> result = new ArrayList<>();
+            for (int i = 0; i < table.getStructure().columnList().size(); i++) {
+                result.add(i);
+            }
+            return result;
+        }
         List<Integer> indexes = new ArrayList<>();
         for (var name : args) {
             indexes.add(getColumnIndex(table, name));

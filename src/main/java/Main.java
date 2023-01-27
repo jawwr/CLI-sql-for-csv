@@ -6,6 +6,6 @@ public class Main {
     public static void main(String[] args) {
         From.setPath(args[0]);
         Interpreter interpreter = new SqlInterpreter();
-        interpreter.interpret("SELECT capital, square FROM countries WHERE square >= 8600");
+        interpreter.interpret("SELECT * FROM countries WHERE square < 10000 and continent = europe");
     }
 }

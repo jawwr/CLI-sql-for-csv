@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TableDrawer {
-    public void draw(Table table) {
+    public static void draw(Table table) {
         var columns = table.getStructure().columnList();
         List<Tuple<String, Integer>> space = getColumnsSize(table);
         drawHeader(columns, space);
         drawValues(table.getValues(), space);
     }
 
-    private void drawValues(String[][] values, List<Tuple<String, Integer>> space) {
+    private static void drawValues(String[][] values, List<Tuple<String, Integer>> space) {
         for (int i = 0; i < values.length; i++) {
             for (int j = 0; j < values[i].length; j++) {
                 int width = space.get(j).second();
@@ -34,7 +34,7 @@ public class TableDrawer {
         System.out.println(border);
     }
 
-    private void drawHeader(List<Column> columns, List<Tuple<String, Integer>> space) {
+    private static void drawHeader(List<Column> columns, List<Tuple<String, Integer>> space) {
         System.out.println(getUpBorder(space));
         for (int i = 0; i < columns.size(); i++) {
             System.out.print("║");
@@ -47,7 +47,7 @@ public class TableDrawer {
         System.out.println(getBetweenBorder(space));
     }
 
-    private List<Tuple<String, Integer>> getColumnsSize(Table table) {
+    private static List<Tuple<String, Integer>> getColumnsSize(Table table) {
         List<Tuple<String, Integer>> spaces = new ArrayList<>();
         for (int i = 0; i < table.getStructure().columnList().size(); i++) {
             var column = table.getStructure().columnList().get(i);
@@ -59,7 +59,7 @@ public class TableDrawer {
         return spaces;
     }
 
-    private int getMaxValueSizeInColumn(String[][] columnValue, int index) {
+    private static int getMaxValueSizeInColumn(String[][] columnValue, int index) {
         int max = 0;
         for (String[] value : columnValue) {
             if (value[index].length() > max) {
@@ -69,25 +69,25 @@ public class TableDrawer {
         return (max ^ 1) != 0 ? max + 1 : max;
     }
 
-    private String setSpace(String value, int width) {
+    private static String setSpace(String value, int width) {
         var returnedString = " ".repeat(Math.max(0, width - value.length()));
 
         return returnedString + value;
     }
 
-    private String getUpBorder(List<Tuple<String, Integer>> values) {
+    private static String getUpBorder(List<Tuple<String, Integer>> values) {
         return getBorderByPattern(values, "╔", "═", "╦", "╗");
     }
 
-    private String getBetweenBorder(List<Tuple<String, Integer>> values) {
+    private static String getBetweenBorder(List<Tuple<String, Integer>> values) {
         return getBorderByPattern(values, "╠", "═", "╬", "╣");
     }
 
-    private String getBottomBorder(List<Tuple<String, Integer>> values) {
+    private static String getBottomBorder(List<Tuple<String, Integer>> values) {
         return getBorderByPattern(values, "╚", "═", "╩", "╝");
     }
 
-    private String getBorderByPattern(List<Tuple<String, Integer>> values, String leftSymbol, String centerSymbol, String delimiterSymbol, String rightSymbol) {
+    private static String getBorderByPattern(List<Tuple<String, Integer>> values, String leftSymbol, String centerSymbol, String delimiterSymbol, String rightSymbol) {
         StringBuilder border = new StringBuilder(leftSymbol);
         int i = 0;
         for (var columnName : values) {
@@ -103,7 +103,7 @@ public class TableDrawer {
         return border.toString();
     }
 
-    private String setSpaceCenter(String value, int width) {
+    private static String setSpaceCenter(String value, int width) {
         int widthWithoutSpace = width - value.length() - 2;
         var spaceAround = " ".repeat(Math.max(0, (width - value.length()) / 2));
         var returnedString = (widthWithoutSpace % 2) == 0 ? spaceAround : spaceAround + " ";
