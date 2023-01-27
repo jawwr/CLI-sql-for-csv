@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Where implements Feature {
-    private static final String[] operations = {"=", "<", ">",};
+    private static final String[] operations = {"=", "<", ">", ">=", "<="};
 
     @Override
     public Table parse(List<String> args, Table table) {
@@ -57,6 +57,8 @@ public class Where implements Feature {
             case "=" -> equalsValues(table, index, value);
             case "<" -> compareValues(table, index, value, "<");
             case ">" -> compareValues(table, index, value, ">");
+            case ">=" -> compareValues(table, index, value, ">=");
+            case "<=" -> compareValues(table, index, value, "<=");
             default -> null;
         };
     }
@@ -66,15 +68,15 @@ public class Where implements Feature {
         for (int i = 0; i < values.length; i++) {
             int intCompareValue = Integer.parseInt(compareValue);
             int intValue = Integer.parseInt(values[i][index]);
-//            var compareResult = values[i][index].compareTo(compareValue);
-            boolean filter;
-            if (operation.equals(">")) {
-                filter = intCompareValue < intValue;
-            }else {
-                filter = intCompareValue > intValue;
-            }
+            boolean filter = switch (operation) {
+                case ">" -> intValue > intCompareValue;
+                case "<" -> intValue < intCompareValue;
+                case ">=" -> intValue >= intCompareValue;
+                case "<=" -> intValue <= intCompareValue;
+                default -> throw new IllegalArgumentException();
+            };
 
-            if (!filter){
+            if (!filter) {
                 values[i] = null;
             }
         }
