@@ -17,7 +17,7 @@ public class Reader implements FileReader {
         List<String> listValue;
         String[] values;
         try {
-            listValue = Files.readAllLines(new File(path + "\\" + fileName).toPath());
+            listValue = Files.readAllLines(new File(path + File.separator + fileName).toPath());
             values = new String[listValue.size()];
             for (int i = 0; i < listValue.size(); i++) {
                 values[i] = listValue.get(i);

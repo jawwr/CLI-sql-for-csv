@@ -1,14 +1,15 @@
 package core.fileWorker;
 
-import java.io.File;
+import core.structure.Table;
+import core.utils.Constants;
 
 public class FileWorker {
     private final FileReader reader;
     private final FileWriter writer;
 
     public FileWorker() {
-        this.reader = new Reader(new File("").getAbsolutePath());
-        this.writer = new Writer(new File("").getAbsolutePath());
+        this.reader = new Reader(Constants.PATH);
+        this.writer = new Writer(Constants.PATH);
     }
 
     public FileWorker(String directory) {
@@ -24,5 +25,9 @@ public class FileWorker {
             tableValues[i] = lineValues;
         }
         return tableValues;
+    }
+
+    public void writeFile(String[][] values, String fileName, Table table) {
+        writer.writeFile(values, fileName);
     }
 }

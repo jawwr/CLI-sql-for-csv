@@ -5,16 +5,17 @@ import core.structure.Column;
 import core.structure.ColumnType;
 import core.structure.Table;
 import core.structure.TableStructure;
+import core.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class From implements Feature {
-    private static FileWorker worker;//TODO сделать по аргументам
+    private static FileWorker worker;
 
-    public static void setPath(String path) {
-        From.worker = new FileWorker(path);
+    public From() {
+        worker = new FileWorker(Constants.PATH);
     }
 
     @Override
