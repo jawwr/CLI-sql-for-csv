@@ -5,13 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3508496a-680f-4fc2-a390-173976607910" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Delete.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test files/numbers.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/fileWorker/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/fileWorker/Writer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/drawUtils/TableDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/drawUtils/TableDrawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/fileWorker/FileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/repos/FileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/fileWorker/FileWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/repos/FileWorker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/fileWorker/FileWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/repos/FileWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/fileWorker/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/repos/Reader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/fileWorker/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/repos/Writer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/FeatureType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/FeatureType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/From.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/From.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Where.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Where.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/utils/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Select.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Select.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/structure/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/structure/Table.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test files/countries.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test files/countries.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +66,9 @@
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="core.fileWorker" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\folder for trash code\sql-interpreter-for-csv\test files" />
     </key>
   </component>
   <component name="RunManager">
@@ -115,6 +127,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sql_interpreter_for_csv$Main.ic" NAME="Main Coverage Results" MODIFIED="1674821548634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

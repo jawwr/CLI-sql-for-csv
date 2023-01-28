@@ -6,6 +6,7 @@ public enum FeatureType {
     INSERT("insert", new Insert()),
     FROM("from", new From()),
     WHERE("where", new Where()),
+    DELETE("delete", new Delete()),
     SELECT("select", new Select());
     private final String queryName;
     private final Feature feature;

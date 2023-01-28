@@ -15,7 +15,7 @@ public class Select implements Feature {
         List<Column> newColumns = selectHeader(table, indexes);
 
         TableStructure newStructure = new TableStructure(newColumns);
-        Table newTable = new Table(newStructure);
+        Table newTable = new Table(table.getName(), newStructure);
         newTable.setValues(newValues);
 
         return newTable;

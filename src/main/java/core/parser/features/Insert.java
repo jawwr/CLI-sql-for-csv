@@ -1,26 +1,17 @@
 package core.parser.features;
 
-import core.fileWorker.FileWorker;
+import core.repos.FileWorker;
 import core.structure.Column;
 import core.structure.Table;
-import core.utils.Constants;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Insert implements Feature {
-    private final FileWorker fileWorker;
-
-    public Insert() {
-        this.fileWorker = new FileWorker(Constants.PATH);
-    }
-
     @Override
     public Table parse(List<String> args, Table table) {
         String tableName = findTableName(args);
-        From from = new From();
-        Table newTable = from.parse(Collections.singletonList(tableName), null);
+        Table newTable = getAllTable(tableName);
         List<String> insertValues = getValues(args, newTable);
         String[][] values = addNewValue(newTable.getValues(), insertValues.toArray(new String[0]));
 
@@ -31,11 +22,16 @@ public class Insert implements Feature {
         return newTable;
     }
 
+    private Table getAllTable(String name) {
+        From from = new From();
+        return from.parse(List.of(name), null);
+    }
+
     private void addValueInFile(String[][] values, String tableName, Table table) {
         String[][] newValues = new String[values.length + 1][];
         newValues[0] = getHeader(table);
         System.arraycopy(values, 0, newValues, 1, values.length);
-        fileWorker.writeFile(newValues, tableName, table);
+        FileWorker.writeFile(newValues, tableName);
     }
 
     private String[] getHeader(Table table) {
@@ -66,6 +62,7 @@ public class Insert implements Feature {
         for (int i = valuesStartIndex; i < args.size(); i++) {
             values.add(args.get(i));
         }
+
         if (values.size() != table.getStructure().columnList().size()) {
             throw new IllegalArgumentException("Column count not match column count");
         }

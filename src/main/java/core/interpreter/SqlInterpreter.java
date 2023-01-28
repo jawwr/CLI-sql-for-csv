@@ -45,6 +45,9 @@ public class SqlInterpreter implements Interpreter {
     }
 
     private boolean isConcatOperation(String word) {
+        if (word.length() == 1){
+            return false;
+        }
         for (String operation : Constants.AVAILABLE_OPERATION) {
             if (word.contains(operation)) {
                 return true;

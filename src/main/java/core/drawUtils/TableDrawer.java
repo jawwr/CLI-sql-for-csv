@@ -52,8 +52,8 @@ public class TableDrawer {
         for (int i = 0; i < table.getStructure().columnList().size(); i++) {
             var column = table.getStructure().columnList().get(i);
             var columnValue = table.getValues();
-            int width = Math.max(column.getName().length() + 2, getMaxValueSizeInColumn(columnValue, i) + 2);// calculateTableColumnSize(column.getName());
-            spaces.add(new Tuple<>(column.getName(), width));
+            int width = Math.max(column.getName().trim().length() + 2, getMaxValueSizeInColumn(columnValue, i) + 2);
+            spaces.add(new Tuple<>(column.getName().trim(), width));
         }
 
         return spaces;
@@ -104,7 +104,7 @@ public class TableDrawer {
     }
 
     private static String setSpaceCenter(String value, int width) {
-        int widthWithoutSpace = width - value.length() - 2;
+        int widthWithoutSpace = width - value.strip().trim().length() - 2;
         var spaceAround = " ".repeat(Math.max(0, (width - value.length()) / 2));
         var returnedString = (widthWithoutSpace % 2) == 0 ? spaceAround : spaceAround + " ";
         returnedString += value;
