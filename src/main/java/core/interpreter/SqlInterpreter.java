@@ -21,7 +21,7 @@ public class SqlInterpreter implements Interpreter {
     }
 
     private Map<FeatureType, List<String>> splitQuery(String query) {
-        List<String> subQuery = Arrays.stream(query.split("\\s|,|\\s,\\s"))
+        List<String> subQuery = Arrays.stream(query.split("\\s|,|\\s,\\s|^$"))
                 .filter(x -> !x.isEmpty())
                 .toList();
 

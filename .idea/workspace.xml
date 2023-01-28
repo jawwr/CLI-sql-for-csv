@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3508496a-680f-4fc2-a390-173976607910" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/utils/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/fileWorker/FileWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/fileWorker/FileWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/fileWorker/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/fileWorker/Reader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/fileWorker/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/fileWorker/Writer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/FeatureType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/FeatureType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/From.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/From.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test files/countries.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test files/countries.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +89,7 @@
       <workItem from="1674738695162" duration="3650000" />
       <workItem from="1674757471855" duration="6920000" />
       <workItem from="1674808152256" duration="14052000" />
-      <workItem from="1674902294615" duration="5037000" />
+      <workItem from="1674902294615" duration="5456000" />
     </task>
     <servers />
   </component>
