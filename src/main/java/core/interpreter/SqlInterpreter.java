@@ -3,12 +3,11 @@ package core.interpreter;
 import core.drawUtils.TableDrawer;
 import core.parser.FeatureType;
 import core.structure.Table;
+import core.utils.Constants;
 
 import java.util.*;
 
 public class SqlInterpreter implements Interpreter {
-    private final List<String> operations = Arrays.asList("=", ">", "<", "<=", ">=");
-
     @Override
     public void interpret(String query) {
         Map<FeatureType, List<String>> splitQuery = splitQuery(query);
@@ -46,7 +45,7 @@ public class SqlInterpreter implements Interpreter {
     }
 
     private boolean isConcatOperation(String word) {
-        for (String operation : operations) {
+        for (String operation : Constants.AVAILABLE_OPERATION) {
             if (word.contains(operation)) {
                 return true;
             }
@@ -57,7 +56,7 @@ public class SqlInterpreter implements Interpreter {
 
     private List<String> splitOperations(String word) {
         List<String> result = new ArrayList<>();
-        for (String operation : operations) {
+        for (String operation : Constants.AVAILABLE_OPERATION) {
             if (word.contains(operation)) {
                 var split = Arrays.stream(word.split(operation))
                         .filter(x -> !x.isEmpty())

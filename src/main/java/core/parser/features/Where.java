@@ -1,14 +1,13 @@
 package core.parser.features;
 
 import core.structure.Table;
+import core.utils.Constants;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class Where implements Feature {
-    private static final String[] operations = {"=", "<", ">", ">=", "<="};
-
     @Override
     public Table parse(List<String> args, Table table) {
         String[][] values = null;
@@ -133,7 +132,7 @@ public class Where implements Feature {
     }
 
     private boolean isAvailableOperations(String operationName) {
-        return Arrays.asList(operations).contains(operationName);
+        return Constants.AVAILABLE_OPERATION.contains(operationName);
     }
 
     private int getColumnIndex(Table table, String name) {
@@ -143,7 +142,7 @@ public class Where implements Feature {
 
             return columns.indexOf(column);
         } catch (Exception e) {
-            throw new IllegalArgumentException("Column with that name not exist");
+            throw new IllegalArgumentException("Column with name " + name + " not exist");
         }
     }
 }

@@ -27,11 +27,7 @@ public class Writer implements FileWriter {
     private List<String> convertToCsv(String[][] values) {
         List<String> value = new ArrayList<>();
         for (String[] strings : values) {
-            StringBuilder sb = new StringBuilder();
-            for (String string : strings) {
-                sb.append(string).append(";");
-            }
-            value.add(sb.toString());
+            value.add(String.join(";", strings));
         }
 
         return value;
