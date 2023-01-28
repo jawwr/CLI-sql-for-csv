@@ -16,7 +16,7 @@ public class Where implements Feature {
             var operation = args.get(i + 1);
             if (isAvailableOperations(operation)) {
                 values = filter(table, operation, args.get(i), args.get(i + 2));
-                i ++;
+                i++;
             }
 
             if (operation.equalsIgnoreCase("or")) {
@@ -43,14 +43,24 @@ public class Where implements Feature {
         String[][] result = new String[minRowNum][];
         int currIndex = 0;
 
-        for (int i = 0; i < minRowNum; i++){
-            if (Arrays.stream(minLengthArray).toList().contains(maxLengthArray[i])){
-                result[currIndex] = maxLengthArray[i];
+        for (int i = 0; i < minRowNum; i++) {
+            boolean isContains = contains(minLengthArray[i], maxLengthArray);
+            if (isContains) {
+                result[currIndex] = minLengthArray[i];
                 currIndex++;
             }
         }
 
         return Arrays.stream(result).filter(Objects::nonNull).toList().toArray(new String[0][0]);
+    }
+
+    private boolean contains(String[] arrayFrom, String[][] compareArray) {
+        for (String[] arrCompare : compareArray) {
+            if (Arrays.deepEquals(arrayFrom, arrCompare)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private String[][] filter(Table table, String operation, String columnName, String compareValue) {
@@ -127,9 +137,13 @@ public class Where implements Feature {
     }
 
     private int getColumnIndex(Table table, String name) {
-        var columns = table.getStructure().columnList();
-        var column = columns.stream().filter(x -> x.getName().equalsIgnoreCase(name)).findFirst().get();
+        try {
+            var columns = table.getStructure().columnList();
+            var column = columns.stream().filter(x -> x.getName().equalsIgnoreCase(name)).findFirst().get();
 
-        return columns.indexOf(column);
+            return columns.indexOf(column);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Column with that name not exist");
+        }
     }
 }

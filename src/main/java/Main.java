@@ -9,7 +9,7 @@ public class Main {
         Interpreter interpreter = new SqlInterpreter();
 //        Scanner scanner = new Scanner(System.in);
 //        interpreter.interpret(scanner.next());
-        interpreter.interpret("SELECT * FROM countries WHERE square < 100 and continent = europe or continent = asia");
+        interpreter.interpret("SELECT * FROM countries WHERE square<100 and continent =europe and populations< 50000");
 //        interpreter.interpret("INSERT INTO countries VALUES testCountry, testCapital, testSquare, testPopulation, testContinent");
     }
 }
