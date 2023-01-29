@@ -1,13 +1,8 @@
 package core.parser.features;
 
 import core.repos.FileWorker;
-import core.structure.Column;
-import core.structure.ColumnType;
 import core.structure.Table;
-import core.structure.TableStructure;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class From implements Feature {
@@ -16,30 +11,6 @@ public class From implements Feature {
     public Table parse(List<String> args, Table table) {
         var fileValue = FileWorker.readFile(args.get(0) + ".csv");
 
-        TableStructure structure = new TableStructure(getColumn(fileValue[0]));
-        Table allTable = new Table(args.get(0), structure);
-        allTable.setValues(getTableValues(fileValue));
-
-        return allTable;
-    }
-
-
-    private String[][] getTableValues(String[][] allValues) {
-        var values = Arrays.stream(allValues).skip(1).toArray();
-        String[][] tableValues = new String[values.length][];
-        for (int i = 0; i < values.length; i++) {
-            tableValues[i] = (String[]) values[i];
-        }
-        return tableValues;
-    }
-
-    private List<Column> getColumn(String[] columns) {
-        List<Column> columnList = new ArrayList<>();
-        for (String columnValues : columns) {
-            Column column = new Column(ColumnType.VARCHAR, columnValues);//TODO (?) сделать проверку на то, какие типы данных могут быть
-            columnList.add(column);
-        }
-
-        return columnList;
+        return Table.fromCSV(fileValue, args.get(0));
     }
 }

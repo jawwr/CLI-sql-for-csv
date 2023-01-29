@@ -7,9 +7,10 @@
     <list default="true" id="3508496a-680f-4fc2-a390-173976607910" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/drawUtils/TableDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/drawUtils/TableDrawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Where.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Where.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/From.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/From.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/repos/Writer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/repos/Writer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/structure/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/structure/Table.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +97,7 @@
       <workItem from="1674757471855" duration="6920000" />
       <workItem from="1674808152256" duration="14052000" />
       <workItem from="1674902294615" duration="5456000" />
-      <workItem from="1674980082670" duration="4853000" />
+      <workItem from="1674980082670" duration="7501000" />
     </task>
     <servers />
   </component>
@@ -116,17 +117,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/core/drawUtils/TableDrawer.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="58" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sql_interpreter_for_csv$Main.ic" NAME="Main Coverage Results" MODIFIED="1674821548634" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

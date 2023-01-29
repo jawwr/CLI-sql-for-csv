@@ -17,7 +17,7 @@ public class Insert implements Feature {
 
         newTable.setValues(values);
 
-        addValueInFile(values, tableName, newTable);
+        addValueInFile(newTable);
 
         return newTable;
     }
@@ -27,21 +27,8 @@ public class Insert implements Feature {
         return from.parse(List.of(name), null);
     }
 
-    private void addValueInFile(String[][] values, String tableName, Table table) {
-        String[][] newValues = new String[values.length + 1][];
-        newValues[0] = getHeader(table);
-        System.arraycopy(values, 0, newValues, 1, values.length);
-        FileWorker.writeFile(newValues, tableName);
-    }
-
-    private String[] getHeader(Table table) {
-        var columns = table.getStructure().columnList();
-        List<String> columnName = new ArrayList<>();
-        for (Column column : columns) {
-            columnName.add(column.getName());
-        }
-
-        return columnName.toArray(new String[0]);
+    private void addValueInFile(Table table) {
+        FileWorker.writeFile(table.toCSV(), table.getName());
     }
 
     private String[][] addNewValue(String[][] values, String[] addValue) {
