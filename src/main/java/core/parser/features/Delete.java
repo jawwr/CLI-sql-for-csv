@@ -1,6 +1,6 @@
 package core.parser.features;
 
-import core.repos.FileWorker;
+import core.repos.TableRepo;
 import core.structure.Column;
 import core.structure.Table;
 
@@ -26,7 +26,7 @@ public class Delete implements Feature {
         String[][] newValues = new String[values.length + 1][];
         newValues[0] = getHeader(table);
         System.arraycopy(values, 0, newValues, 1, values.length);
-        FileWorker.writeFile(newValues, tableName);
+        TableRepo.writeFile(newValues, tableName);
     }
 
     private String[] getHeader(Table table) {

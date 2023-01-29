@@ -1,8 +1,8 @@
 package core.parser.features;
 
-import core.repos.FileWorker;
-import core.structure.Column;
+import core.repos.TableRepo;
 import core.structure.Table;
+import core.utils.ListExtension;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class Insert implements Feature {
     }
 
     private void addValueInFile(Table table) {
-        FileWorker.writeFile(table.toCSV(), table.getName());
+        TableRepo.writeFile(table.toCSV(), table.getName());
     }
 
     private String[][] addNewValue(String[][] values, String[] addValue) {
@@ -41,10 +41,10 @@ public class Insert implements Feature {
     }
 
     private List<String> getValues(List<String> args, Table table) {
-        if (!containsIgnoreCase(args, "values")) {
+        if (!ListExtension.containsIgnoreCase(args, "values")) {
             throw new IllegalArgumentException("Values not exist");
         }
-        int valuesStartIndex = indexOfIgnoreCase(args, "values") + 1;
+        int valuesStartIndex = ListExtension.indexOfIgnoreCase(args, "values") + 1;
         List<String> values = new ArrayList<>();
         for (int i = valuesStartIndex; i < args.size(); i++) {
             values.add(args.get(i));
@@ -58,32 +58,12 @@ public class Insert implements Feature {
     }
 
     private String findTableName(List<String> args) {
-        if (!containsIgnoreCase(args, "into")) {
+        if (!ListExtension.containsIgnoreCase(args, "into")) {
             throw new IllegalArgumentException("Into not exist");
         }
 
-        int intoIndex = indexOfIgnoreCase(args, "into") + 1;
+        int intoIndex = ListExtension.indexOfIgnoreCase(args, "into") + 1;
 
         return args.get(intoIndex);
-    }
-
-    private boolean containsIgnoreCase(List<String> list, String word) {
-        for (String item : list) {
-            if (item.equalsIgnoreCase(word)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private int indexOfIgnoreCase(List<String> list, String word) {
-        for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).equalsIgnoreCase(word)) {
-                return i;
-            }
-        }
-
-        return -1;
     }
 }

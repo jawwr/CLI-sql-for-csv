@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+//TODO сделать строковые параметры с кавычками, числовые оставить
 public class Where implements Feature {
     @Override
     public Table parse(List<String> args, Table table) {
@@ -22,7 +23,7 @@ public class Where implements Feature {
                 i += 2;
                 operation = args.get(i + 1);
                 var filterResult = filter(table, operation, args.get(i), args.get(i + 2));
-                values = concatFilters(values, filterResult);//TODO сделать свое исключение на случай отсутствия параметров после or
+                values = concatFiltersWithOr(values, filterResult);//TODO сделать свое исключение на случай отсутствия параметров после or
             } else if (operation.equalsIgnoreCase("and")) {
                 i += 2;
                 operation = args.get(i + 1);
@@ -63,11 +64,11 @@ public class Where implements Feature {
     }
 
     private String[][] filter(Table table, String operation, String columnName, String compareValue) {
-        int index = getColumnIndex(table, columnName);
+        int index = table.getColumnIndex(columnName);
         return filterValueByIndex(table.getValues().clone(), index, operation, compareValue);
     }
 
-    private String[][] concatFilters(String[][]... allFilterResult) {
+    private String[][] concatFiltersWithOr(String[][]... allFilterResult) {
         var rowNum = getRowCount(allFilterResult);
         String[][] result = new String[rowNum][];
         int row = 0;
@@ -133,16 +134,5 @@ public class Where implements Feature {
 
     private boolean isAvailableOperations(String operationName) {
         return Constants.AVAILABLE_OPERATION.contains(operationName);
-    }
-
-    private int getColumnIndex(Table table, String name) {
-        try {
-            var columns = table.getStructure().columnList();
-            var column = columns.stream().filter(x -> x.getName().equalsIgnoreCase(name)).findFirst().get();
-
-            return columns.indexOf(column);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("Column with name " + name + " not exist");
-        }
     }
 }

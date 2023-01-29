@@ -1,8 +1,9 @@
 package core.repos;
 
+import core.structure.Table;
 import core.utils.Constants;
 
-public class FileWorker {
+public class TableRepo {
     private static final FileReader reader;
     private static final FileWriter writer;
 
@@ -11,7 +12,7 @@ public class FileWorker {
         writer = new Writer(Constants.PATH);
     }
 
-    public static String[][] readFile(String fileName) {
+    private static String[][] readFile(String fileName) {
         var values = reader.readFile(fileName);
         String[][] tableValues = new String[values.length][];
         for (int i = 0; i < values.length; i++) {
@@ -23,5 +24,11 @@ public class FileWorker {
 
     public static void writeFile(String[][] values, String fileName) {
         writer.writeFile(values, fileName);
+    }
+
+    public static Table readTableFromCSV(String name){
+        var values = readFile(name + ".csv");
+
+        return Table.fromCSV(values, name);
     }
 }

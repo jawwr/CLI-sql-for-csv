@@ -12,8 +12,10 @@ public class Main {
 //        interpreter.interpret("INSERT INTO countries VALUES testCountry, testCapital, -10, 10, testContinent");
 //        interpreter.interpret("INSERT INTO countries VALUES testCountry, testCapital, -10, 20, testContinent");
 //        interpreter.interpret("INSERT INTO countries VALUES testCountry, testCapital, 10, 123, testContinent");
-        interpreter.interpret("select * from numbers");
+//        interpreter.interpret("select * from numbers");
+//        interpreter.interpret("update numbers set values = 10 where name = a or name = c");
 //        interpreter.interpret("select * from countries");
 //        interpreter.interpret("DELETE FROM countries WHERE square < 0 or populations = 123");
+//        interpreter.interpret("UPDATE countries SET populations = 10, continent = newContinent WHERE square = -10");
     }
 }

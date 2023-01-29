@@ -39,11 +39,9 @@ public class Table {
     }
 
     private static String[][] getTableValues(String[][] allValues) {
-        var values = Arrays.stream(allValues).skip(1).toArray();
+        var values = Arrays.stream(allValues).skip(1).toList().toArray(new String[0][0]);
         String[][] tableValues = new String[values.length][];
-        for (int i = 0; i < values.length; i++) {
-            tableValues[i] = (String[]) values[i];
-        }
+        System.arraycopy(values, 0, tableValues, 0, values.length);
         return tableValues;
     }
 
@@ -57,7 +55,7 @@ public class Table {
         return columnList;
     }
 
-    public String[][] toCSV(){
+    public String[][] toCSV() {
         String[][] newValues = new String[values.length + 1][];
         newValues[0] = getHeader();
         System.arraycopy(values, 0, newValues, 1, values.length);
@@ -75,4 +73,17 @@ public class Table {
         return columnName.toArray(new String[0]);
     }
 
+    public int getColumnIndex(String name) {
+        try {
+            var columns = structure.columnList();
+            var column = columns.stream()
+                    .filter(x -> x.getName().equalsIgnoreCase(name))
+                    .findFirst()
+                    .get();
+
+            return columns.indexOf(column);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Column with name " + name + " not exist");
+        }
+    }
 }
