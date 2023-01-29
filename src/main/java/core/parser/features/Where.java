@@ -22,12 +22,12 @@ public class Where implements Feature {
                 i += 2;
                 operation = args.get(i + 1);
                 var filterResult = filter(table, operation, args.get(i), args.get(i + 2));
-                values = concatFilters(values, filterResult);
+                values = concatFilters(values, filterResult);//TODO сделать свое исключение на случай отсутствия параметров после or
             } else if (operation.equalsIgnoreCase("and")) {
                 i += 2;
                 operation = args.get(i + 1);
                 var filterResult = filter(table, operation, args.get(i), args.get(i + 2));
-                values = concatFiltersWithAnd(values, filterResult);
+                values = concatFiltersWithAnd(values, filterResult);//TODO сделать свое исключение на случай отсутствия параметров после and
             }
         }
         table.setValues(values);

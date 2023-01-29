@@ -9,6 +9,7 @@ import java.util.*;
 
 public class SqlInterpreter implements Interpreter {
     @Override
+    @SuppressWarnings("ConstantConditions")
     public void interpret(String query) {
         Map<FeatureType, List<String>> splitQuery = splitQuery(query);
 
@@ -45,7 +46,7 @@ public class SqlInterpreter implements Interpreter {
     }
 
     private boolean isConcatOperation(String word) {
-        if (word.length() == 1){
+        if (word.length() == 1) {
             return false;
         }
         for (String operation : Constants.AVAILABLE_OPERATION) {
