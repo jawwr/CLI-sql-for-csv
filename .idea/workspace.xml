@@ -7,10 +7,8 @@
     <list default="true" id="3508496a-680f-4fc2-a390-173976607910" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/interpreter/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/interpreter/Interpreter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Delete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Delete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test files/numbers.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test files/numbers.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +97,7 @@
       <workItem from="1674902294615" duration="5456000" />
       <workItem from="1674980082670" duration="7844000" />
       <workItem from="1675009687829" duration="7906000" />
-      <workItem from="1675070219742" duration="2649000" />
+      <workItem from="1675070219742" duration="6107000" />
     </task>
     <servers />
   </component>
@@ -123,11 +121,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/core/drawUtils/TableDrawer.java</url>
-          <line>12</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/core/repos/TableRepo.java</url>
           <line>19</line>

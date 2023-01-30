@@ -1,6 +1,5 @@
 package core.interpreter;
 
-import core.drawUtils.TableDrawer;
 import core.parser.FeatureType;
 import core.structure.Table;
 import core.utils.Constants;
@@ -9,8 +8,7 @@ import java.util.*;
 
 public class SqlInterpreter implements Interpreter {
     @Override
-    @SuppressWarnings("ConstantConditions")
-    public void interpret(String query) {
+    public Table interpret(String query) {
         Map<FeatureType, List<String>> splitQuery = splitQuery(query);
 
         Table table = null;
@@ -18,7 +16,8 @@ public class SqlInterpreter implements Interpreter {
             var args = splitQuery.get(subQuery);
             table = subQuery.getFeature().parse(args, table);
         }
-        TableDrawer.draw(table);
+
+        return table;
     }
 
     private Map<FeatureType, List<String>> splitQuery(String query) {
@@ -36,7 +35,7 @@ public class SqlInterpreter implements Interpreter {
                 if (isConcatOperation(word)) {
                     var operation = splitOperations(word);
                     splitQuery.get(currentFeature).addAll(operation);
-                } else if (isParameter(word)){
+                } else if (isParameter(word)) {
                     var parameter = getParameter(word);
                     splitQuery.get(currentFeature).addAll(parameter);
                 } else {

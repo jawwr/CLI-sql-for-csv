@@ -1,6 +1,8 @@
 package core.interpreter;
 
+import core.structure.Table;
+
 @FunctionalInterface
 public interface Interpreter {
-    void interpret(String query);
+    Table interpret(String query);
 }
