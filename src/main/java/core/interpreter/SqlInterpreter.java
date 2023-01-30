@@ -36,6 +36,9 @@ public class SqlInterpreter implements Interpreter {
                 if (isConcatOperation(word)) {
                     var operation = splitOperations(word);
                     splitQuery.get(currentFeature).addAll(operation);
+                } else if (isParameter(word)){
+                    var parameter = getParameter(word);
+                    splitQuery.get(currentFeature).addAll(parameter);
                 } else {
                     splitQuery.get(currentFeature).add(word);
                 }
@@ -43,6 +46,16 @@ public class SqlInterpreter implements Interpreter {
         }
 
         return splitQuery;
+    }
+
+    private List<String> getParameter(String word) {
+        var words = word.split("[)(]");
+
+        return new ArrayList<>(Arrays.asList(words));
+    }
+
+    private boolean isParameter(String word) {
+        return word.contains("(") || word.contains(")");
     }
 
     private boolean isConcatOperation(String word) {

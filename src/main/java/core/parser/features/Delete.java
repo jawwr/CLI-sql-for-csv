@@ -40,8 +40,7 @@ public class Delete implements Feature {
     }
 
     private Table getAllTable(String name) {
-        From from = new From();
-        return from.parse(List.of(name), null);
+        return TableRepo.readTableFromCSV(name);
     }
 
     private String[][] deleteValues(String[][] values, String[][] deleteValues) {
