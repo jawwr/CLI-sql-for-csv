@@ -279,3 +279,4 @@ Zambia;Lusaka;752614;16717000;Africa
 Zimbabwe;Harare;390580;15967000;Africa
 testCountry;testCapital;-10;10;newContinent
 testCountry;testCapital;-10;10;newContinent
+null;testCountry;10;123;null

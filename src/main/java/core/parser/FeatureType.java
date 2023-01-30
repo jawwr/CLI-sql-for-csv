@@ -9,7 +9,8 @@ public enum FeatureType {
     WHERE("where", new Where()),
     SET("set", new Set()),
     DELETE("delete", new Delete()),
-    SELECT("select", new Select());
+    SELECT("select", new Select()),
+    CREATE("create", new Create());
     private final String queryName;
     private final Feature feature;
 

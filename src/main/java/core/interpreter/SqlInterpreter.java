@@ -48,9 +48,38 @@ public class SqlInterpreter implements Interpreter {
     }
 
     private List<String> getParameter(String word) {
-        var words = word.split("[)(]");
+        var words = Arrays.stream(word.split("[)(]")).filter(x -> !x.isEmpty()).toList().toArray(new String[0]);
+        List<String> params = new ArrayList<>();
 
-        return new ArrayList<>(Arrays.asList(words));
+        if (word.contains("(")){
+            if (words.length == 1){
+                params.addAll(Arrays.asList(words));
+                params.add("(");
+            }else {
+                insertBrackets(words, params, "(");
+            }
+        } else if (word.contains(")")) {
+            if (words.length == 1){
+                params.addAll(Arrays.asList(words));
+                params.add(")");
+            }else {
+                insertBrackets(words, params, ")");
+            }
+        }
+
+        return params;
+    }
+
+    private void insertBrackets(String[] words, List<String> params, String bracketSymbol){
+        switch (words.length) {
+            case 0 -> params.add(bracketSymbol);
+            case 2 -> {
+                params.add(words[0]);
+                params.add(bracketSymbol);
+                params.add(words[1]);
+            }
+            default -> throw new IllegalArgumentException();
+        }
     }
 
     private boolean isParameter(String word) {

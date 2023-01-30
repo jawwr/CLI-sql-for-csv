@@ -13,7 +13,7 @@ public class Insert implements Feature {
     public Table parse(List<String> args, Table table) {
         String tableName = findTableName(args);
         table = getAllTable(tableName);
-        List<String> insertValues = getValues(args, table);
+        List<String> insertValues = getValues(args);
 
         if (isParameterExist(args)) {
             var params = getParameters(args);
@@ -50,12 +50,12 @@ public class Insert implements Feature {
         for (Column column : structure) {
             if (!ListExtension.containsIgnoreCase(existParameters, column.getName())){
                 int index = structure.indexOf(column);
-                parameters.add(index, " ");
+                parameters.add(index, "null");
             }
         }
     }
 
-    private List<String> getValues(List<String> args, Table table) {
+    private List<String> getValues(List<String> args) {
         if (!ListExtension.containsIgnoreCase(args, "values")) {
             throw new IllegalArgumentException("Values not exist");
         }
@@ -69,8 +69,8 @@ public class Insert implements Feature {
     }
 
     private List<String> getParameters(List<String> args){
-        int intoIndex = ListExtension.indexOfIgnoreCase(args, "into") + 2;
-        int valueIndex = ListExtension.indexOfIgnoreCase(args, "values");
+        int intoIndex = ListExtension.indexOfIgnoreCase(args, "(") + 1;
+        int valueIndex = ListExtension.indexOfIgnoreCase(args, ")");
 
         List<String> parameters = new ArrayList<>();
         for (int i = intoIndex; i < valueIndex; i++){
@@ -81,10 +81,7 @@ public class Insert implements Feature {
     }
 
     private boolean isParameterExist(List<String> args){
-        int intoIndex = ListExtension.indexOfIgnoreCase(args, "into") + 2;
-        int valueIndex = ListExtension.indexOfIgnoreCase(args, "values");
-
-        return valueIndex - intoIndex != 0;
+        return ListExtension.containsIgnoreCase(args, "(") && ListExtension.containsIgnoreCase(args, ")");
     }
 
     private String findTableName(List<String> args) {
