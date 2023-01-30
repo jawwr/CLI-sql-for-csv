@@ -22,6 +22,12 @@ public class Table {
         return values;
     }
 
+    public Table(String name, TableStructure structure, String[][] values) {
+        this.name = name;
+        this.structure = structure;
+        this.values = values;
+    }
+
     public TableStructure getStructure() {
         return structure;
     }

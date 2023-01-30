@@ -16,7 +16,7 @@ public class Insert implements Feature {
         List<String> insertValues = getValues(args);
 
         if (isParameterExist(args)) {
-            var params = getParameters(args);
+            var params = ListExtension.getParameters(args);
             insertMissingParameters(table.getStructure().columnList(), insertValues, params);
         }
 
@@ -46,9 +46,9 @@ public class Insert implements Feature {
         return newValues;
     }
 
-    private void insertMissingParameters(List<Column> structure, List<String> parameters, List<String> existParameters){
+    private void insertMissingParameters(List<Column> structure, List<String> parameters, List<String> existParameters) {
         for (Column column : structure) {
-            if (!ListExtension.containsIgnoreCase(existParameters, column.getName())){
+            if (!ListExtension.containsIgnoreCase(existParameters, column.getName())) {
                 int index = structure.indexOf(column);
                 parameters.add(index, "null");
             }
@@ -68,19 +68,7 @@ public class Insert implements Feature {
         return values;
     }
 
-    private List<String> getParameters(List<String> args){
-        int intoIndex = ListExtension.indexOfIgnoreCase(args, "(") + 1;
-        int valueIndex = ListExtension.indexOfIgnoreCase(args, ")");
-
-        List<String> parameters = new ArrayList<>();
-        for (int i = intoIndex; i < valueIndex; i++){
-            parameters.add(args.get(i));
-        }
-
-        return parameters;
-    }
-
-    private boolean isParameterExist(List<String> args){
+    private boolean isParameterExist(List<String> args) {
         return ListExtension.containsIgnoreCase(args, "(") && ListExtension.containsIgnoreCase(args, ")");
     }
 

@@ -1,5 +1,6 @@
 package core.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListExtension {
@@ -21,5 +22,17 @@ public class ListExtension {
         }
 
         return -1;
+    }
+
+    public static List<String> getParameters(List<String> args) {
+        int startIndex = indexOfIgnoreCase(args, "(") + 1;
+        int endIndex = indexOfIgnoreCase(args, ")");
+
+        List<String> params = new ArrayList<>();
+        for (int i = startIndex; i < endIndex; i++) {
+            params.add(args.get(i));
+        }
+
+        return params;
     }
 }

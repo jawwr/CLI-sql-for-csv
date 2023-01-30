@@ -16,7 +16,7 @@ public class Writer implements FileWriter {
     public void writeFile(String[][] values, String fileName) {
         try {
             var value = convertToCsv(values);
-            var file = new File(path + File.separator + fileName.toLowerCase() + ".csv").toPath();
+            var file = new File(path + File.separator + fileName + ".csv").toPath();
             Files.write(file, value);
         } catch (Exception e) {
             e.printStackTrace();

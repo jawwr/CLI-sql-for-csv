@@ -53,8 +53,8 @@ public class SqlInterpreter implements Interpreter {
 
         if (word.contains("(")){
             if (words.length == 1){
-                params.addAll(Arrays.asList(words));
                 params.add("(");
+                params.addAll(Arrays.asList(words));
             }else {
                 insertBrackets(words, params, "(");
             }
