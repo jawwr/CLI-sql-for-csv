@@ -3,9 +3,9 @@ package core.parser.features;
 import core.repos.TableRepo;
 import core.structure.Column;
 import core.structure.Table;
+import core.structure.TableStructure;
 import core.utils.ListExtension;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Insert implements Feature {
@@ -15,10 +15,11 @@ public class Insert implements Feature {
         table = getAllTable(tableName);
         List<String> insertValues = getValues(args);
 
-        if (isParameterExist(args)) {
+        if (isColumnListExist(args)) {
             var params = ListExtension.getParameters(args);
             insertMissingParameters(table.getStructure().columnList(), insertValues, params);
         }
+        validateParameterCount(insertValues, table.getStructure());
 
         String[][] values = addNewValue(table.getValues(), insertValues.toArray(new String[0]));
 
@@ -27,6 +28,12 @@ public class Insert implements Feature {
         addValueInFile(table);
 
         return table;
+    }
+
+    private void validateParameterCount(List<String> insertValues, TableStructure structure) {
+        if (insertValues.size() != structure.columnList().size()) {
+            throw new IllegalArgumentException("Invalid column count");
+        }
     }
 
     private Table getAllTable(String name) {
@@ -59,17 +66,17 @@ public class Insert implements Feature {
         if (!ListExtension.containsIgnoreCase(args, "values")) {
             throw new IllegalArgumentException("Values not exist");
         }
-        int valuesStartIndex = ListExtension.indexOfIgnoreCase(args, "values") + 1;
-        List<String> values = new ArrayList<>();
-        for (int i = valuesStartIndex; i < args.size(); i++) {
-            values.add(args.get(i));
-        }
+        int valuesIndex = ListExtension.indexOfIgnoreCase(args, "values");
+        var argsAfterValues = args.subList(valuesIndex, args.size());
 
-        return values;
+        return ListExtension.getParameters(argsAfterValues);
     }
 
-    private boolean isParameterExist(List<String> args) {
-        return ListExtension.containsIgnoreCase(args, "(") && ListExtension.containsIgnoreCase(args, ")");
+    private boolean isColumnListExist(List<String> args) {
+        int valuesIndex = ListExtension.indexOfIgnoreCase(args, "values");
+        var list = args.subList(0, valuesIndex);
+        return (ListExtension.containsIgnoreCase(list, "(") && ListExtension.containsIgnoreCase(list, ")"))
+                || !args.get(4).equalsIgnoreCase("values");
     }
 
     private String findTableName(List<String> args) {

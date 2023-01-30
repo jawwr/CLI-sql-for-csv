@@ -27,6 +27,7 @@ public class SqlInterpreter implements Interpreter {
 
         Map<FeatureType, List<String>> splitQuery = new TreeMap<>();
         FeatureType currentFeature = null;
+        boolean isBracketsOpen = false;
         for (var word : subQuery) {
             if (isFeatureType(word)) {
                 currentFeature = FeatureType.valueOf(word.toUpperCase());
@@ -38,10 +39,15 @@ public class SqlInterpreter implements Interpreter {
                 } else if (isParameter(word)) {
                     var parameter = getParameter(word);
                     splitQuery.get(currentFeature).addAll(parameter);
+                    isBracketsOpen = !isBracketsOpen;
                 } else {
                     splitQuery.get(currentFeature).add(word);
                 }
             }
+        }
+
+        if (isBracketsOpen){
+            throw new IllegalArgumentException("Invalid brackets");
         }
 
         return splitQuery;
@@ -83,6 +89,7 @@ public class SqlInterpreter implements Interpreter {
     }
 
     private boolean isParameter(String word) {
+
         return word.contains("(") || word.contains(")");
     }
 

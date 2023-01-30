@@ -19,8 +19,10 @@ public class Main {
 //        interpreter.interpret("select * from countries");
 //        interpreter.interpret("DELETE FROM countries WHERE square < 0 or populations = 123");
 //        interpreter.interpret("UPDATE countries SET populations = 10, continent = newContinent WHERE square = -10");
-                interpreter.interpret("CREATE table testTable (id, name, age, surname)");
-
+//                interpreter.interpret("CREATE table testTable (id, name, age, surname)");
+//                interpreter.interpret("select * from testTable");
+//                interpreter.interpret("insert into testTable (id, name, age, surname) values (1, John, 19, Owl)");
+                interpreter.interpret("delete from testTable where id = 1");
         TableDrawer.draw(table);
     }
 }
