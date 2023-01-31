@@ -3,6 +3,10 @@ package core.repos;
 import core.structure.Table;
 import core.utils.Constants;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 public class TableRepo {
     private static final FileReader reader;
     private static final FileWriter writer;
@@ -26,9 +30,17 @@ public class TableRepo {
         writer.writeFile(values, fileName);
     }
 
-    public static Table readTableFromCSV(String name){
+    public static Table readTableFromCSV(String name) {
         var values = readFile(name + ".csv");
 
         return Table.fromCSV(values, name);
+    }
+
+    public static void deleteTable(String tableName) {
+        try {
+            Files.delete(Path.of(Constants.PATH + File.separator + tableName + ".csv"));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

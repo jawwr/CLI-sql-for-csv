@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3508496a-680f-4fc2-a390-173976607910" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Drop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Create.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Create.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test files/testTable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test files/testTable.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/FeatureType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/FeatureType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/repos/TableRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/repos/TableRepo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +54,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="core.parser" />
       <recent name="core.fileWorker" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -100,7 +101,7 @@
       <workItem from="1674980082670" duration="7844000" />
       <workItem from="1675009687829" duration="7906000" />
       <workItem from="1675070219742" duration="15363000" />
-      <workItem from="1675154016055" duration="3373000" />
+      <workItem from="1675154016055" duration="8049000" />
     </task>
     <servers />
   </component>

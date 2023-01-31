@@ -23,7 +23,8 @@ public class Main {
 //                interpreter.interpret("select id, name from testTable");
 //                interpreter.interpret("insert into testTable values (3, Mike, 15, Whiller)");
 //                interpreter.interpret("delete from testTable where id = 1");
-                interpreter.interpret("CREATE TABLE newTestTable1 AS SELECT id, name, surname FROM testTable where id < 3");
+//                interpreter.interpret("CREATE TABLE newTestTable1 AS SELECT id, name, surname FROM testTable where id < 3");
+                interpreter.interpret("DROP TABLE newTestTable1");
         TableDrawer.draw(table);
     }
 }

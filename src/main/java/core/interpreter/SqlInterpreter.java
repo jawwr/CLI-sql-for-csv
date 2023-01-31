@@ -54,7 +54,10 @@ public class SqlInterpreter implements Interpreter {
     }
 
     private List<String> getParameter(String word) {
-        var words = Arrays.stream(word.split("[()]")).filter(x -> !x.isEmpty()).toList().toArray(new String[0]);
+        var words = Arrays.stream(word.split("[()]"))
+                .filter(x -> !x.isEmpty())
+                .toList()
+                .toArray(new String[0]);
         List<String> params = new ArrayList<>();
 
         if (word.contains("(")){

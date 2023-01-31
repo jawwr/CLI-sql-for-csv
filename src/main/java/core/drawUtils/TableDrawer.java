@@ -10,6 +10,10 @@ import java.util.List;
 
 public class TableDrawer {
     public static void draw(Table table) {
+        if (table == null){
+            System.out.println("Complete!");
+            return;
+        }
         var columns = table.getStructure().columnList();
         columns.add(0, new Column(ColumnType.VARCHAR, ""));
         List<Tuple<String, Integer>> space = getColumnsSize(table);
