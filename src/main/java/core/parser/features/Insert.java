@@ -64,7 +64,7 @@ public class Insert implements Feature {
 
     private List<String> getValues(List<String> args) {
         if (!ListExtension.containsIgnoreCase(args, "values")) {
-            throw new IllegalArgumentException("Values not exist");
+            throw new IllegalArgumentException("Missing 'VALUES'");
         }
         int valuesIndex = ListExtension.indexOfIgnoreCase(args, "values");
         var argsAfterValues = args.subList(valuesIndex, args.size());
@@ -76,12 +76,12 @@ public class Insert implements Feature {
         int valuesIndex = ListExtension.indexOfIgnoreCase(args, "values");
         var list = args.subList(0, valuesIndex);
         return (ListExtension.containsIgnoreCase(list, "(") && ListExtension.containsIgnoreCase(list, ")"))
-                || !args.get(4).equalsIgnoreCase("values");
+                || !args.get(2).equalsIgnoreCase("values");
     }
 
     private String findTableName(List<String> args) {
         if (!ListExtension.containsIgnoreCase(args, "into")) {
-            throw new IllegalArgumentException("Into not exist");
+            throw new IllegalArgumentException("Missing 'INTO");
         }
 
         int intoIndex = ListExtension.indexOfIgnoreCase(args, "into") + 1;

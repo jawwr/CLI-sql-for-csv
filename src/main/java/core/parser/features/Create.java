@@ -13,25 +13,30 @@ import java.util.List;
 public class Create implements Feature {
     @Override
     public Table parse(List<String> args, Table table) {
-        validate(args);
-        List<String> parameters = ListExtension.getParameters(args);
-
-        String tableName = args.get(1);
-        List<Column> columns = getColumns(parameters);
-        TableStructure structure = new TableStructure(columns);
-        Table createTable = new Table(tableName, structure, new String[0][0]);
-        createTableFile(createTable);
-
-        return createTable;
-    }
-
-    private void validate(List<String> args){
         if (!args.get(0).equalsIgnoreCase("table")) {
             throw new IllegalArgumentException("Missing 'TABLE' after 'CREATE'");
         }
-        if (!isParameterExist(args)) {
-            throw new IllegalArgumentException("Missing parameters in query");
+
+        Table createTable;
+        if (ListExtension.containsIgnoreCase(args, "as")){
+            createTable = createTable(args.get(1), table.getStructure().columnList(), table.getValues());
+        }else {
+            if (!isParameterExist(args)) {
+                throw new IllegalArgumentException("Missing parameters in query");
+            }
+
+            List<String> parameters = ListExtension.getParameters(args);
+            createTable = createTable(args.get(1), getColumns(parameters), new String[0][0]);
         }
+
+        createTableFile(createTable);
+        return createTable;
+    }
+
+    private Table createTable(String name, List<Column> columnList, String[][] values){
+        TableStructure structure = new TableStructure(columnList);
+
+        return new Table(name, structure, values);
     }
 
     private void createTableFile(Table table) {
