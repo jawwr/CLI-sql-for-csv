@@ -5,6 +5,7 @@ import core.parser.features.*;
 public enum FeatureType {
     INSERT("insert", new Insert()),
     FROM("from", new From()),
+    JOIN("join", new Join()),
     UPDATE("update", new Update()),
     WHERE("where", new Where()),
     SET("set", new Set()),

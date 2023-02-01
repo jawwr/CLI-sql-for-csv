@@ -6,12 +6,36 @@ import java.util.List;
 
 public class Table {
     private final String name;
+    private String alias;
     private final TableStructure structure;
     private String[][] values;
+
+    public Table(String name, String alias, TableStructure structure, String[][] values) {
+        this.name = name;
+        this.alias = alias;
+        this.structure = structure;
+        this.values = values;
+    }
+
+    public Table(String name, TableStructure structure, String[][] values) {
+        this.name = name;
+        this.structure = structure;
+        this.values = values;
+        this.alias = name;
+    }
 
     public Table(String name, TableStructure structure) {
         this.structure = structure;
         this.name = name;
+        this.alias = name;
+    }
+
+    public Table(Table copyTable){
+        this.name = copyTable.name;
+        this.alias = copyTable.alias;
+//        this.structure = new TableStructure(copyTable.getStructure().columnList().stream().toList());
+        this.structure = new TableStructure(copyTable.getStructure().columnList().stream().toList());
+        this.values = copyTable.getValues().clone();
     }
 
     public String getName() {
@@ -22,10 +46,12 @@ public class Table {
         return values;
     }
 
-    public Table(String name, TableStructure structure, String[][] values) {
-        this.name = name;
-        this.structure = structure;
-        this.values = values;
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
     }
 
     public TableStructure getStructure() {

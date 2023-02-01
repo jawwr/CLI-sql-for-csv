@@ -1,4 +1,4 @@
-package core.drawUtils;
+package cliInterface.drawUtils;
 
 import core.structure.Column;
 import core.structure.ColumnType;

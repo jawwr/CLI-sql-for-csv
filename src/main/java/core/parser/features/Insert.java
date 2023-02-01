@@ -81,7 +81,7 @@ public class Insert implements Feature {
 
     private String findTableName(List<String> args) {
         if (!ListExtension.containsIgnoreCase(args, "into")) {
-            throw new IllegalArgumentException("Missing 'INTO");
+            throw new IllegalArgumentException("Missing 'INTO'");
         }
 
         int intoIndex = ListExtension.indexOfIgnoreCase(args, "into") + 1;
