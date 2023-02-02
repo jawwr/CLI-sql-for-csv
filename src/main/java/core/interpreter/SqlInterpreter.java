@@ -3,6 +3,7 @@ package core.interpreter;
 import core.parser.FeatureType;
 import core.structure.Table;
 import core.utils.Constants;
+import core.utils.ListExtension;
 
 import java.util.*;
 
@@ -102,6 +103,8 @@ public class SqlInterpreter implements Interpreter {
 
     private boolean isConcatOperation(String word) {
         if (word.length() == 1) {
+            return false;
+        } else if (ListExtension.containsIgnoreCase(Constants.AVAILABLE_OPERATION, word)) {
             return false;
         }
         for (String operation : Constants.AVAILABLE_OPERATION) {

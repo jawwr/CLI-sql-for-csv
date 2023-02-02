@@ -12,7 +12,8 @@ public enum FeatureType {
     DELETE("delete", new Delete()),
     SELECT("select", new Select()),
     CREATE("create", new Create()),
-    DROP("drop", new Drop());
+    DROP("drop", new Drop()),
+    LIMIT("limit", new Limit());
     private final String queryName;
     private final Feature feature;
 

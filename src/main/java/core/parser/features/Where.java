@@ -106,8 +106,20 @@ public class Where implements Feature {
             case ">" -> compareValues(values, index, value, ">");
             case ">=" -> compareValues(values, index, value, ">=");
             case "<=" -> compareValues(values, index, value, "<=");
+            case "<>" -> notEqualsValues(values, index, value);
             default -> null;
         };
+    }
+
+    private String[][] notEqualsValues(String[][] values, int index, String equalsValue) {
+        values = Arrays.stream(values).filter(Objects::nonNull).toList().toArray(new String[0][0]);
+        for (int i = 0; i < values.length; i++) {
+            var value = values[i][index];
+            if (value.equalsIgnoreCase(equalsValue)) {
+                values[i] = null;
+            }
+        }
+        return Arrays.stream(values).filter(Objects::nonNull).toList().toArray(new String[0][0]);
     }
 
     private String[][] compareValues(String[][] values, int index, String compareValue, String operation) {
