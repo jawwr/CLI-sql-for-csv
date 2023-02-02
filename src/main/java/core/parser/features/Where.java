@@ -20,15 +20,23 @@ public class Where implements Feature {
             }
 
             if (operation.equalsIgnoreCase("or")) {
-                i += 2;
-                operation = args.get(i + 1);
-                var filterResult = filter(table, operation, args.get(i), args.get(i + 2));
-                values = concatFiltersWithOr(values, filterResult);//TODO сделать свое исключение на случай отсутствия параметров после or
+                try {
+                    i += 2;
+                    operation = args.get(i + 1);
+                    var filterResult = filter(table, operation, args.get(i), args.get(i + 2));
+                    values = concatFiltersWithOr(values, filterResult);
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("Missing arguments after 'or'");
+                }
             } else if (operation.equalsIgnoreCase("and")) {
-                i += 2;
-                operation = args.get(i + 1);
-                var filterResult = filter(table, operation, args.get(i), args.get(i + 2));
-                values = concatFiltersWithAnd(values, filterResult);//TODO сделать свое исключение на случай отсутствия параметров после and
+                try {
+                    i += 2;
+                    operation = args.get(i + 1);
+                    var filterResult = filter(table, operation, args.get(i), args.get(i + 2));
+                    values = concatFiltersWithAnd(values, filterResult);
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("Missing arguments after 'and'");
+                }
             }
         }
         table.setValues(values);

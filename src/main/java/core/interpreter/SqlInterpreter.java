@@ -46,7 +46,7 @@ public class SqlInterpreter implements Interpreter {
             }
         }
 
-        if (isBracketsOpen){
+        if (isBracketsOpen) {
             throw new IllegalArgumentException("Invalid brackets");
         }
 
@@ -60,18 +60,22 @@ public class SqlInterpreter implements Interpreter {
                 .toArray(new String[0]);
         List<String> params = new ArrayList<>();
 
-        if (word.contains("(")){
-            if (words.length == 1){
+        if (word.contains("(") && word.contains(")")) {
+            params.add("(");
+            params.addAll(Arrays.asList(words));
+            params.add(")");
+        } else if (word.contains("(")) {
+            if (words.length == 1) {
                 params.add("(");
                 params.addAll(Arrays.asList(words));
-            }else {
+            } else {
                 insertBrackets(words, params, "(");
             }
         } else if (word.contains(")")) {
-            if (words.length == 1){
+            if (words.length == 1) {
                 params.addAll(Arrays.asList(words));
                 params.add(")");
-            }else {
+            } else {
                 insertBrackets(words, params, ")");
             }
         }
@@ -79,7 +83,7 @@ public class SqlInterpreter implements Interpreter {
         return params;
     }
 
-    private void insertBrackets(String[] words, List<String> params, String bracketSymbol){
+    private void insertBrackets(String[] words, List<String> params, String bracketSymbol) {
         switch (words.length) {
             case 0 -> params.add(bracketSymbol);
             case 2 -> {

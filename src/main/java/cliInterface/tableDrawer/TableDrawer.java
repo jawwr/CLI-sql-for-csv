@@ -1,4 +1,4 @@
-package cliInterface.drawUtils;
+package cliInterface.tableDrawer;
 
 import core.structure.Column;
 import core.structure.ColumnType;
@@ -23,14 +23,14 @@ public class TableDrawer {
 
     private static void drawValues(String[][] values, List<Tuple<String, Integer>> space) {
         for (int i = 0; i < values.length; i++) {
-            System.out.print("║");
+            System.out.print("|");//║
             System.out.print(setSpaceCenter(Integer.toString(i + 1), space.get(0).second()));
             for (int j = 0; j < values[i].length; j++) {
                 int width = space.get(j + 1).second();
-                System.out.print("║");
+                System.out.print("|");//║
                 System.out.print(setSpace(values[i][j], width));
                 if (j == values[i].length - 1) {
-                    System.out.println("║");
+                    System.out.println("|");//║
                 }
             }
             if (i != values.length - 1) {
@@ -45,12 +45,12 @@ public class TableDrawer {
     private static void drawHeader(List<Column> columns, List<Tuple<String, Integer>> space) {
         System.out.println(getUpBorder(space));
         for (int i = 0; i < columns.size(); i++) {
-            System.out.print("║");
+            System.out.print("|");//║
             var name = columns.get(i).getName();
             var columnSpace = space.get(i).second();
             System.out.print(setSpaceCenter(name, columnSpace));
             if (i == columns.size() - 1) {
-                System.out.println("║");
+                System.out.println("|");//║
             }
         }
         System.out.println(getBetweenBorder(space));
@@ -90,15 +90,18 @@ public class TableDrawer {
     }
 
     private static String getUpBorder(List<Tuple<String, Integer>> values) {
-        return getBorderByPattern(values, "╔", "═", "╦", "╗");
+        return getBorderByPattern(values,"+", "-", "+", "+");
+//        return getBorderByPattern(values, "╔", "═", "╦", "╗");
     }
 
     private static String getBetweenBorder(List<Tuple<String, Integer>> values) {
-        return getBorderByPattern(values, "╠", "═", "╬", "╣");
+        return getBorderByPattern(values,"+", "-", "+", "+");
+//        return getBorderByPattern(values, "╠", "═", "╬", "╣");
     }
 
     private static String getBottomBorder(List<Tuple<String, Integer>> values) {
-        return getBorderByPattern(values, "╚", "═", "╩", "╝");
+        return getBorderByPattern(values,"+", "-", "+", "+");
+//        return getBorderByPattern(values, "╚", "═", "╩", "╝");
     }
 
     private static String getBorderByPattern(List<Tuple<String, Integer>> values, String leftSymbol, String centerSymbol, String delimiterSymbol, String rightSymbol) {

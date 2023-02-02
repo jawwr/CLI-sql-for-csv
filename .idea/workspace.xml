@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3508496a-680f-4fc2-a390-173976607910" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Join.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test files/ages.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cliInterface/CLIInterface/CliInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/drawUtils/TableDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cliInterface/drawUtils/TableDrawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/FeatureType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/FeatureType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/From.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/From.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cliInterface/drawUtils/TableDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cliInterface/tableDrawer/TableDrawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Where.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Where.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/repos/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/repos/Reader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/structure/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/structure/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test files/newTestTable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test files/newTestTable.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +48,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/senakacesov/Development/folder for trash code/CLI-sql-for-csv",
+    "last_opened_file_path": "D:/folder for trash code/sql-interpreter-for-csv",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
@@ -78,6 +77,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -109,6 +111,8 @@
       <workItem from="1675070219742" duration="15363000" />
       <workItem from="1675154016055" duration="13323000" />
       <workItem from="1675242719663" duration="8390000" />
+      <workItem from="1675257323053" duration="1674000" />
+      <workItem from="1675328294643" duration="7092000" />
     </task>
     <servers />
   </component>
@@ -120,7 +124,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -133,14 +149,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/core/parser/features/Join.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="14" />
+          <url>file://$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -80,7 +80,7 @@ public class Table {
     private static List<Column> getColumn(String[] columns) {
         List<Column> columnList = new ArrayList<>();
         for (String columnValues : columns) {
-            Column column = new Column(ColumnType.VARCHAR, columnValues);//TODO (?) сделать проверку на то, какие типы данных могут быть
+            Column column = new Column(ColumnType.VARCHAR, columnValues);
             columnList.add(column);
         }
 

@@ -23,8 +23,7 @@ public class Reader implements FileReader {
                 values[i] = listValue.get(i);
             }
         } catch (IOException e) {
-            e.printStackTrace();
-            return new String[0];
+            throw new IllegalArgumentException("Table with name " + fileName.split("\\.")[0] + " not exist");
         }
         return values;
     }
