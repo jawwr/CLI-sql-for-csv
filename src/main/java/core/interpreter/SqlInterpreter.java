@@ -14,7 +14,7 @@ public class SqlInterpreter implements Interpreter {
     @Override
     public Table interpret(String query) {
         var splitQuery = splitQuery(query);
-        splitQuery.sort(this::a);
+        splitQuery.sort(this::sortFeature);
 
         Table table = null;
         for (var subQuery : splitQuery) {
@@ -25,7 +25,7 @@ public class SqlInterpreter implements Interpreter {
         return table;
     }
 
-    private int a(Tuple<FeatureType, List<String>> first, Tuple<FeatureType, List<String>> second) {
+    private int sortFeature(Tuple<FeatureType, List<String>> first, Tuple<FeatureType, List<String>> second) {
         return first.first().ordinal() - second.first().ordinal();
     }
 

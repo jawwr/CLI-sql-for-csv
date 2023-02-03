@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-//TODO добавить кавычки строковым данным
 public class Where implements Feature {
     @Override
     public Table parse(List<String> args, Table table) {
@@ -106,10 +105,7 @@ public class Where implements Feature {
     private String[][] filterValueByIndex(String[][] values, int index, String operation, String value) {
         return switch (operation) {
             case "=" -> equalsValues(values, index, value);
-            case "<" -> compareValues(values, index, value, "<");
-            case ">" -> compareValues(values, index, value, ">");
-            case ">=" -> compareValues(values, index, value, ">=");
-            case "<=" -> compareValues(values, index, value, "<=");
+            case "<", "<=", ">", ">=" -> compareValues(values, index, value, operation);
             case "<>" -> notEqualsValues(values, index, value);
             default -> null;
         };
