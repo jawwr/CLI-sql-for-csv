@@ -10,6 +10,7 @@ public class Limit implements Feature{
         int limitValue = 0;
         try{
             limitValue = Integer.parseInt(args.get(0));
+            limitValue = Math.min(table.getValues().length, limitValue);
         }catch (Exception e){
             throw new IllegalArgumentException("Invalid 'LIMIT' parameter");
         }

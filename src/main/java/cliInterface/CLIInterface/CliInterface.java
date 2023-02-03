@@ -4,6 +4,7 @@ import cliInterface.tableDrawer.TableDrawer;
 import core.interpreter.Interpreter;
 import core.interpreter.SqlInterpreter;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class CliInterface {
@@ -12,7 +13,7 @@ public class CliInterface {
         while (true) {
             try {
                 System.out.println("Input Query: ");
-                Scanner scanner = new Scanner(System.in);
+                Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
                 var table = interpreter.interpret(scanner.nextLine());
                 TableDrawer.draw(table);
             } catch (IllegalArgumentException e) {

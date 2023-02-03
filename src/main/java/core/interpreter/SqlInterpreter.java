@@ -47,7 +47,7 @@ public class SqlInterpreter implements Interpreter {
                     var list = splitQuery.get(splitQuery.size() - 1).second();
                     insertParameterWithQuotationMark(word, isQuoteOpen, list);
 
-                    if (word.contains("'") && !word.matches("'.+'.")) {
+                    if (word.contains("'") && !word.matches("'.+'.?")) {
                         isQuoteOpen = !isQuoteOpen;
                     }
 

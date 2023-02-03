@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3508496a-680f-4fc2-a390-173976607910" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cliInterface/CLIInterface/CliInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cliInterface/CLIInterface/CliInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test files/newTestTable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test files/newTestTable.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Limit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Limit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/repos/TableRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/repos/TableRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test files/tb.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test files/tb.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +67,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="sql-interpreter-for-csv" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;$PROJECT_DIR$/test files&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;D:\загрузки&quot; &quot;$PROJECT_DIR$/test files&quot;" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -109,7 +112,8 @@
       <workItem from="1675328294643" duration="7092000" />
       <workItem from="1675348292089" duration="4088000" />
       <workItem from="1675360429374" duration="1888000" />
-      <workItem from="1675413655271" duration="12201000" />
+      <workItem from="1675413655271" duration="12641000" />
+      <workItem from="1675431088976" duration="1541000" />
     </task>
     <servers />
   </component>
@@ -149,16 +153,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/core/parser/features/Where.java</url>
           <line>130</line>
           <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="61" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
