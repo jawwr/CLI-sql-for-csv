@@ -84,7 +84,7 @@ public class SqlInterpreter implements Interpreter {
         return splitQuery;
     }
 
-    private boolean insertBrackets(String word, List<String> list, boolean isBracketsOpen){
+    private boolean insertBrackets(String word, List<String> list, boolean isBracketsOpen) {
         var params = getParameter(word);
         if (params.contains("(") && params.contains(")")) {
             list.add(list.size() - 2, "(");
@@ -100,7 +100,7 @@ public class SqlInterpreter implements Interpreter {
         }
     }
 
-    private void insertParameterWithQuotationMark(String word, boolean isQuoteOpen, List<String> list){
+    private void insertParameterWithQuotationMark(String word, boolean isQuoteOpen, List<String> list) {
         word = word.trim();
         var parameterWord = Arrays.stream(word.split("\\('|'\\)|'|\\s'|'\\s|\\s'\\s"))
                 .filter(x -> !x.isEmpty())
@@ -113,25 +113,6 @@ public class SqlInterpreter implements Interpreter {
         } else {
             list.add(parameterWord);
         }
-
-//        if (word.contains("'") && !word.matches("'.+'.")) {
-//            isQuoteOpen = !isQuoteOpen;
-//        }
-//
-//        if (isParameter(word)) {
-//            var params = getParameter(word);
-//            if (params.contains("(") && params.contains(")")) {
-//                list.add(list.size() - 2, "(");
-//                list.add(")");
-//            } else {
-//                if (params.contains("(")) {
-//                    list.add(list.size() - 1, "(");
-//                } else {
-//                    list.add(")");
-//                }
-//                isBracketsOpen = !isBracketsOpen;
-//            }
-//        }
     }
 
     private int findFeatureIndex(List<Tuple<FeatureType, List<String>>> list, FeatureType current) {
