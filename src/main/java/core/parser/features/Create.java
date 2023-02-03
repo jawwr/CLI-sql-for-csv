@@ -18,23 +18,23 @@ public class Create implements Feature {
         }
 
         Table createTable;
-        if (ListExtension.containsIgnoreCase(args, "as")){
-            createTable = createTable(args.get(1), table.getStructure().columnList(), table.getValues());
-        }else {
+        if (ListExtension.containsIgnoreCase(args, "as")) {
+            createTable = createTable(args.get(1), table.getStructure().getColumnList(), table.getValues());
+        } else {
             if (!isParameterExist(args)) {
                 throw new IllegalArgumentException("Missing parameters in query");
             }
 
             List<String> parameters = ListExtension.getParameters(args);
-            createTable = createTable(args.get(1), getColumns(parameters), new String[0][0]);
+            createTable = createTable(args.get(1), getColumns(parameters, args.get(1)), new String[0][0]);
         }
 
         createTableFile(createTable);
         return createTable;
     }
 
-    private Table createTable(String name, List<Column> columnList, String[][] values){
-        TableStructure structure = new TableStructure(columnList);
+    private Table createTable(String name, List<Column> columnList, String[][] values) {
+        TableStructure structure = new TableStructure(columnList, name);
 
         return new Table(name, structure, values);
     }
@@ -43,10 +43,10 @@ public class Create implements Feature {
         TableRepo.writeFile(table.toCSV(), table.getName());
     }
 
-    private List<Column> getColumns(List<String> args) {
+    private List<Column> getColumns(List<String> args, String tableName) {
         List<Column> columns = new ArrayList<>();
         for (String columnName : args) {
-            columns.add(new Column(ColumnType.VARCHAR, columnName));
+            columns.add(new Column(ColumnType.VARCHAR, tableName + "." + columnName));
         }
 
         return columns;

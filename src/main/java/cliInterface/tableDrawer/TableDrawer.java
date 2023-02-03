@@ -10,11 +10,11 @@ import java.util.List;
 
 public class TableDrawer {
     public static void draw(Table table) {
-        if (table == null){
+        if (table == null) {
             System.out.println("Complete!");
             return;
         }
-        var columns = table.getStructure().columnList();
+        var columns = table.getStructure().getColumnList();
         columns.add(0, new Column(ColumnType.VARCHAR, ""));
         List<Tuple<String, Integer>> space = getColumnsSize(table);
         drawHeader(columns, space);
@@ -59,8 +59,8 @@ public class TableDrawer {
     private static List<Tuple<String, Integer>> getColumnsSize(Table table) {
         List<Tuple<String, Integer>> spaces = new ArrayList<>();
         spaces.add(new Tuple<>("", getMaxRowNumSize(table.getValues())));
-        for (int i = 1; i < table.getStructure().columnList().size(); i++) {
-            var column = table.getStructure().columnList().get(i);
+        for (int i = 1; i < table.getStructure().getColumnList().size(); i++) {
+            var column = table.getStructure().getColumnList().get(i);
             var columnValue = table.getValues();
             int width = Math.max(column.getName().trim().length() + 2, getMaxValueSizeInColumn(columnValue, i - 1) + 2);
             spaces.add(new Tuple<>(column.getName().trim(), width));
@@ -90,17 +90,17 @@ public class TableDrawer {
     }
 
     private static String getUpBorder(List<Tuple<String, Integer>> values) {
-        return getBorderByPattern(values,"+", "-", "+", "+");
+        return getBorderByPattern(values, "+", "-", "+", "+");
 //        return getBorderByPattern(values, "╔", "═", "╦", "╗");
     }
 
     private static String getBetweenBorder(List<Tuple<String, Integer>> values) {
-        return getBorderByPattern(values,"+", "-", "+", "+");
+        return getBorderByPattern(values, "+", "-", "+", "+");
 //        return getBorderByPattern(values, "╠", "═", "╬", "╣");
     }
 
     private static String getBottomBorder(List<Tuple<String, Integer>> values) {
-        return getBorderByPattern(values,"+", "-", "+", "+");
+        return getBorderByPattern(values, "+", "-", "+", "+");
 //        return getBorderByPattern(values, "╚", "═", "╩", "╝");
     }
 

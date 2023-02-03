@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Reader implements FileReader {
     private final String path;
-
     public Reader(String path) {
         this.path = path;
     }

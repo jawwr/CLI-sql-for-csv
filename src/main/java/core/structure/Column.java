@@ -10,6 +10,13 @@ public class Column {
     }
 
     public String getName() {
+        if (!name.contains(".")) {
+            return name;
+        }
+        return name.split("\\.")[1];
+    }
+
+    public String getAllName() {
         return name;
     }
 

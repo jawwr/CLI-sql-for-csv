@@ -30,11 +30,10 @@ public class Table {
         this.alias = name;
     }
 
-    public Table(Table copyTable){
+    public Table(Table copyTable) {
         this.name = copyTable.name;
         this.alias = copyTable.alias;
-//        this.structure = new TableStructure(copyTable.getStructure().columnList().stream().toList());
-        this.structure = new TableStructure(copyTable.getStructure().columnList().stream().toList());
+        this.structure = new TableStructure(copyTable.getStructure().getColumnList().stream().toList(), alias);
         this.values = copyTable.getValues().clone();
     }
 
@@ -52,6 +51,10 @@ public class Table {
 
     public void setAlias(String alias) {
         this.alias = alias;
+        var structures = structure.getColumnList();
+        for (Column column : structures) {
+            column.setName(alias + "." + column.getName());
+        }
     }
 
     public TableStructure getStructure() {
@@ -63,7 +66,7 @@ public class Table {
     }
 
     public static Table fromCSV(String[][] values, String tableName) {
-        TableStructure structure = new TableStructure(getColumn(values[0]));
+        TableStructure structure = new TableStructure(getColumn(values[0]), tableName);
         Table table = new Table(tableName, structure);
         table.setValues(getTableValues(values));
 
@@ -96,7 +99,7 @@ public class Table {
     }
 
     private String[] getHeader() {
-        var columns = structure.columnList();
+        var columns = structure.getColumnList();
         List<String> columnName = new ArrayList<>();
         for (Column column : columns) {
             columnName.add(column.getName());
@@ -107,9 +110,9 @@ public class Table {
 
     public int getColumnIndex(String name) {
         try {
-            var columns = structure.columnList();
+            var columns = structure.getColumnList();
             var column = columns.stream()
-                    .filter(x -> x.getName().equalsIgnoreCase(name))
+                    .filter(x -> x.getAllName().contains(name))
                     .findFirst()
                     .get();
 

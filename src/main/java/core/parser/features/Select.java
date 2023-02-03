@@ -14,7 +14,7 @@ public class Select implements Feature {
         String[][] newValues = selectColumn(table, indexes);
         List<Column> newColumns = selectHeader(table, indexes);
 
-        TableStructure newStructure = new TableStructure(newColumns);
+        TableStructure newStructure = new TableStructure(newColumns, table.getAlias());
         Table newTable = new Table(table.getName(), newStructure);
         newTable.setValues(newValues);
 
@@ -22,7 +22,7 @@ public class Select implements Feature {
     }
 
     private List<Column> selectHeader(Table table, List<Integer> indexes) {
-        var columns = table.getStructure().columnList();
+        var columns = table.getStructure().getColumnList();
         List<Column> result = new ArrayList<>();
 
         for (int index : indexes) {
@@ -35,14 +35,24 @@ public class Select implements Feature {
     private List<Integer> findColumnsIndexes(List<String> args, Table table) {
         if (args.get(0).equals("*")) {
             List<Integer> result = new ArrayList<>();
-            for (int i = 0; i < table.getStructure().columnList().size(); i++) {
+            for (int i = 0; i < table.getStructure().getColumnList().size(); i++) {
                 result.add(i);
             }
             return result;
         }
         List<Integer> indexes = new ArrayList<>();
         for (var name : args) {
-            indexes.add(getColumnIndex(table, name));
+            if (name.contains("*")) {
+                var columns = table.getStructure().getColumnList()
+                        .stream()
+                        .filter(x -> x.getAllName().contains(name.split("\\.")[0]))
+                        .toList();
+                for (Column column : columns) {
+                    indexes.add(table.getColumnIndex(column.getName()));
+                }
+            } else {
+                indexes.add(table.getColumnIndex(name));
+            }
         }
 
         return indexes;
@@ -62,12 +72,5 @@ public class Select implements Feature {
         }
 
         return result;
-    }
-
-    private int getColumnIndex(Table table, String name) {
-        var columns = table.getStructure().columnList();
-        var column = columns.stream().filter(x -> x.getName().equalsIgnoreCase(name)).findFirst().get();
-
-        return columns.indexOf(column);
     }
 }

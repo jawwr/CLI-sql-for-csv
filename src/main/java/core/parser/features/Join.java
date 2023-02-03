@@ -28,21 +28,30 @@ public class Join implements Feature {
         var columnsKey = getColumnsKey(args);
 
         var tempTable = table1;
-        table1 = columnsKey.first().contains(table1.getAlias()) ? tempTable : table2;
-        table2 = columnsKey.second().contains(table2.getAlias()) ? table2 : tempTable;
+        table1 = containsColumnWithAlias(columnsKey.first(), table1) ? tempTable : table2;
+        table2 = containsColumnWithAlias(columnsKey.second(), table2) ? table2 : tempTable;
 
         validateTables(table1, table2);
 
         return createJoinTable(columnsKey, table1, table2);
     }
 
-    private Table createJoinTable(Tuple<String, String> keys, Table table1, Table table2){
-        String joinKeyTable1 = keys.first().split(table1.getAlias() + ".")[1];
-        String joinKeyTable2 = keys.second().split(table2.getAlias() + ".")[1];
+    private boolean containsColumnWithAlias(String columnKey, Table table) {
+        try {
+            table.getColumnIndex(columnKey);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private Table createJoinTable(Tuple<String, String> keys, Table table1, Table table2) {
+        String joinKeyTable1 = keys.first();
+        String joinKeyTable2 = keys.second();
 
         var joinValues = joinValues(table1, table2, joinKeyTable1, joinKeyTable2);
-        var structures = table1.getStructure().columnList();
-        structures.addAll(table2.getStructure().columnList());
+        var structures = table1.getStructure().getColumnList();
+        structures.addAll(table2.getStructure().getColumnList());
         TableStructure structure = new TableStructure(structures);
 
         return new Table(table1.getName(), table1.getAlias(), structure, joinValues);
@@ -67,7 +76,7 @@ public class Join implements Feature {
             }
         }
 
-        int valuesLength = table1.getStructure().columnList().size() + table2.getStructure().columnList().size();
+        int valuesLength = table1.getStructure().getColumnList().size() + table2.getStructure().getColumnList().size();
 
         return Arrays.stream(valuesTable1).filter(x -> x.length == valuesLength).toList().toArray(new String[0][0]);
     }

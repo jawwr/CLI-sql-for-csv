@@ -5,17 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3508496a-680f-4fc2-a390-173976607910" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Limit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_1_2023_5_08_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_1_2023_5_08_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_1_2023_5_09_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_1_2023_5_09_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_1_2023_5_10_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2_1_2023_5_10_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2_1_2023_5_13_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2_1_2023_5_13_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cliInterface/tableDrawer/TableDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cliInterface/tableDrawer/TableDrawer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/FeatureType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/FeatureType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Create.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Create.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Delete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Delete.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/From.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/From.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Join.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Join.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Select.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Select.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Where.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Where.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/utils/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/repos/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/repos/Reader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/structure/Column.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/structure/Column.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/structure/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/structure/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/structure/TableStructure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/structure/TableStructure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test files/ages.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test files/ages.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +54,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/folder for trash code/sql-interpreter-for-csv&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/folder for trash code/PracticeJSON&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
@@ -115,7 +119,9 @@
       <workItem from="1675242719663" duration="8390000" />
       <workItem from="1675257323053" duration="1674000" />
       <workItem from="1675328294643" duration="7092000" />
-      <workItem from="1675348292089" duration="1774000" />
+      <workItem from="1675348292089" duration="4088000" />
+      <workItem from="1675360429374" duration="1888000" />
+      <workItem from="1675413655271" duration="7012000" />
     </task>
     <servers />
   </component>
@@ -152,19 +158,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/core/parser/features/Where.java</url>
-          <line>114</line>
-          <option name="timeStamp" value="27" />
+          <line>130</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/core/parser/features/Join.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/core/parser/features/Join.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

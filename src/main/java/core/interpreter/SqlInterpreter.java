@@ -4,45 +4,55 @@ import core.parser.FeatureType;
 import core.structure.Table;
 import core.utils.Constants;
 import core.utils.ListExtension;
+import core.utils.Tuple;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class SqlInterpreter implements Interpreter {
     @Override
     public Table interpret(String query) {
-        Map<FeatureType, List<String>> splitQuery = splitQuery(query);
+        var splitQuery = splitQuery(query);
+        splitQuery.sort(this::a);
 
         Table table = null;
-        for (var subQuery : splitQuery.keySet()) {
-            var args = splitQuery.get(subQuery);
-            table = subQuery.getFeature().parse(args, table);
+        for (var subQuery : splitQuery) {
+            var args = subQuery.second();
+            table = subQuery.first().getFeature().parse(args, table);
         }
 
         return table;
     }
 
-    private Map<FeatureType, List<String>> splitQuery(String query) {
+    private int a(Tuple<FeatureType, List<String>> first, Tuple<FeatureType, List<String>> second) {
+        return first.first().ordinal() - second.first().ordinal();
+    }
+
+    private List<Tuple<FeatureType, List<String>>> splitQuery(String query) {
         List<String> subQuery = Arrays.stream(query.split("\\s|,|\\s,\\s|^$"))
                 .filter(x -> !x.isEmpty())
                 .toList();
 
-        Map<FeatureType, List<String>> splitQuery = new TreeMap<>();
+//        Map<FeatureType, List<String>> splitQuery = new TreeMap<>();
+        List<Tuple<FeatureType, List<String>>> splitQuery = new ArrayList<>();
         FeatureType currentFeature = null;
         boolean isBracketsOpen = false;
         for (var word : subQuery) {
             if (isFeatureType(word)) {
                 currentFeature = FeatureType.valueOf(word.toUpperCase());
-                splitQuery.put(currentFeature, new ArrayList<>());
+                splitQuery.add(new Tuple<>(currentFeature, new ArrayList<>()));
             } else {
+                var index = findFeatureIndex(splitQuery, currentFeature);
                 if (isConcatOperation(word)) {
                     var operation = splitOperations(word);
-                    splitQuery.get(currentFeature).addAll(operation);
+                    splitQuery.get(index).second().addAll(operation);
                 } else if (isParameter(word)) {
                     var parameter = getParameter(word);
-                    splitQuery.get(currentFeature).addAll(parameter);
+                    splitQuery.get(index).second().addAll(parameter);
                     isBracketsOpen = !isBracketsOpen;
                 } else {
-                    splitQuery.get(currentFeature).add(word);
+                    splitQuery.get(index).second().add(word);
                 }
             }
         }
@@ -52,6 +62,12 @@ public class SqlInterpreter implements Interpreter {
         }
 
         return splitQuery;
+    }
+
+    private int findFeatureIndex(List<Tuple<FeatureType, List<String>>> list, FeatureType current) {
+        var filterList = list.stream().filter(x -> x.first() == current).toList();
+        var curr = filterList.get(filterList.size() - 1);
+        return list.indexOf(curr);
     }
 
     private List<String> getParameter(String word) {

@@ -7,36 +7,40 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-//TODO сделать строковые параметры с кавычками, числовые оставить
+//TODO добавить кавычки строковым данным
 public class Where implements Feature {
     @Override
     public Table parse(List<String> args, Table table) {
         String[][] values = null;
         for (int i = 0; i < args.size() - 1; i++) {
-            var operation = args.get(i + 1);
-            if (isAvailableOperations(operation)) {
-                values = filter(table, operation, args.get(i), args.get(i + 2));
-                i++;
-            }
+            try {
+                var operation = args.get(i + 1);
+                if (isAvailableOperations(operation)) {
+                    values = filter(table, operation, args.get(i), args.get(i + 2));
+                    i++;
+                }
 
-            if (operation.equalsIgnoreCase("or")) {
-                try {
-                    i += 2;
-                    operation = args.get(i + 1);
-                    var filterResult = filter(table, operation, args.get(i), args.get(i + 2));
-                    values = concatFiltersWithOr(values, filterResult);
-                } catch (Exception e) {
-                    throw new IllegalArgumentException("Missing arguments after 'or'");
+                if (operation.equalsIgnoreCase("or")) {
+                    try {
+                        i += 2;
+                        operation = args.get(i + 1);
+                        var filterResult = filter(table, operation, args.get(i), args.get(i + 2));
+                        values = concatFiltersWithOr(values, filterResult);
+                    } catch (Exception e) {
+                        throw new IllegalArgumentException("Missing arguments after 'or'");
+                    }
+                } else if (operation.equalsIgnoreCase("and")) {
+                    try {
+                        i += 2;
+                        operation = args.get(i + 1);
+                        var filterResult = filter(table, operation, args.get(i), args.get(i + 2));
+                        values = concatFiltersWithAnd(values, filterResult);
+                    } catch (Exception e) {
+                        throw new IllegalArgumentException("Missing arguments after 'and'");
+                    }
                 }
-            } else if (operation.equalsIgnoreCase("and")) {
-                try {
-                    i += 2;
-                    operation = args.get(i + 1);
-                    var filterResult = filter(table, operation, args.get(i), args.get(i + 2));
-                    values = concatFiltersWithAnd(values, filterResult);
-                } catch (Exception e) {
-                    throw new IllegalArgumentException("Missing arguments after 'and'");
-                }
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("The " + args.get(i) + " column type is not an integer");
             }
         }
         table.setValues(values);

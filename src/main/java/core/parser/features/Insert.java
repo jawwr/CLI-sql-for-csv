@@ -17,7 +17,7 @@ public class Insert implements Feature {
 
         if (isColumnListExist(args)) {
             var params = ListExtension.getParameters(args);
-            insertMissingParameters(table.getStructure().columnList(), insertValues, params);
+            insertMissingParameters(table.getStructure().getColumnList(), insertValues, params);
         }
         validateParameterCount(insertValues, table.getStructure());
 
@@ -31,7 +31,7 @@ public class Insert implements Feature {
     }
 
     private void validateParameterCount(List<String> insertValues, TableStructure structure) {
-        if (insertValues.size() != structure.columnList().size()) {
+        if (insertValues.size() != structure.getColumnList().size()) {
             throw new IllegalArgumentException("Invalid column count");
         }
     }

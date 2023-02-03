@@ -30,7 +30,7 @@ public class Delete implements Feature {
     }
 
     private String[] getHeader(Table table) {
-        var columns = table.getStructure().columnList();
+        var columns = table.getStructure().getColumnList();
         List<String> columnName = new ArrayList<>();
         for (Column column : columns) {
             columnName.add(column.getName());
