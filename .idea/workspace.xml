@@ -6,20 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3508496a-680f-4fc2-a390-173976607910" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cliInterface/tableDrawer/TableDrawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cliInterface/tableDrawer/TableDrawer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Create.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Create.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Delete.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Delete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/From.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/From.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Insert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Join.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Join.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Select.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Select.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Where.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Where.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/repos/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/repos/Reader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/structure/Column.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/structure/Column.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/structure/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/structure/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/structure/TableStructure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/structure/TableStructure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test files/ages.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test files/ages.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test files/newTestTable.csv" beforeDir="false" afterPath="$PROJECT_DIR$/test files/newTestTable.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +109,7 @@
       <workItem from="1675328294643" duration="7092000" />
       <workItem from="1675348292089" duration="4088000" />
       <workItem from="1675360429374" duration="1888000" />
-      <workItem from="1675413655271" duration="7012000" />
+      <workItem from="1675413655271" duration="12201000" />
     </task>
     <servers />
   </component>
@@ -163,14 +151,14 @@
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/core/parser/features/Join.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="44" />
+          <url>file://$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/core/parser/features/Join.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="45" />
+          <url>file://$PROJECT_DIR$/src/main/java/core/interpreter/SqlInterpreter.java</url>
+          <line>99</line>
+          <option name="timeStamp" value="61" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

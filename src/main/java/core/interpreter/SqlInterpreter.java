@@ -34,27 +34,47 @@ public class SqlInterpreter implements Interpreter {
                 .filter(x -> !x.isEmpty())
                 .toList();
 
-//        Map<FeatureType, List<String>> splitQuery = new TreeMap<>();
         List<Tuple<FeatureType, List<String>>> splitQuery = new ArrayList<>();
         FeatureType currentFeature = null;
         boolean isBracketsOpen = false;
+        boolean isQuoteOpen = false;
         for (var word : subQuery) {
             if (isFeatureType(word)) {
                 currentFeature = FeatureType.valueOf(word.toUpperCase());
                 splitQuery.add(new Tuple<>(currentFeature, new ArrayList<>()));
             } else {
-                var index = findFeatureIndex(splitQuery, currentFeature);
-                if (isConcatOperation(word)) {
-                    var operation = splitOperations(word);
-                    splitQuery.get(index).second().addAll(operation);
-                } else if (isParameter(word)) {
-                    var parameter = getParameter(word);
-                    splitQuery.get(index).second().addAll(parameter);
-                    isBracketsOpen = !isBracketsOpen;
+                if (isQuoteOpen || word.contains("'")) {
+                    var list = splitQuery.get(splitQuery.size() - 1).second();
+                    insertParameterWithQuotationMark(word, isQuoteOpen, list);
+
+                    if (word.contains("'") && !word.matches("'.+'.")) {
+                        isQuoteOpen = !isQuoteOpen;
+                    }
+
+                    if (isParameter(word)) {
+                        isBracketsOpen = insertBrackets(word, list, isBracketsOpen);
+                    }
+
                 } else {
-                    splitQuery.get(index).second().add(word);
+                    var index = findFeatureIndex(splitQuery, currentFeature);
+                    if (isConcatOperation(word)) {
+                        var operation = splitOperations(word);
+                        splitQuery.get(index).second().addAll(operation);
+                    } else if (isParameter(word)) {
+                        var parameter = getParameter(word);
+                        splitQuery.get(index).second().addAll(parameter);
+                        if (!parameter.contains("(") && !parameter.contains(")")) {
+                            isBracketsOpen = !isBracketsOpen;
+                        }
+                    } else {
+                        splitQuery.get(index).second().add(word);
+                    }
                 }
             }
+        }
+
+        if (isQuoteOpen) {
+            throw new IllegalArgumentException("Quotation mark is not closed");
         }
 
         if (isBracketsOpen) {
@@ -62,6 +82,56 @@ public class SqlInterpreter implements Interpreter {
         }
 
         return splitQuery;
+    }
+
+    private boolean insertBrackets(String word, List<String> list, boolean isBracketsOpen){
+        var params = getParameter(word);
+        if (params.contains("(") && params.contains(")")) {
+            list.add(list.size() - 2, "(");
+            list.add(")");
+            return isBracketsOpen;
+        } else {
+            if (params.contains("(")) {
+                list.add(list.size() - 1, "(");
+            } else {
+                list.add(")");
+            }
+            return !isBracketsOpen;
+        }
+    }
+
+    private void insertParameterWithQuotationMark(String word, boolean isQuoteOpen, List<String> list){
+        word = word.trim();
+        var parameterWord = Arrays.stream(word.split("\\('|'\\)|'|\\s'|'\\s|\\s'\\s"))
+                .filter(x -> !x.isEmpty())
+                .toList()
+                .get(0)
+                .trim();
+
+        if (isQuoteOpen) {
+            list.set(list.size() - 1, list.get(list.size() - 1) + " " + parameterWord);
+        } else {
+            list.add(parameterWord);
+        }
+
+//        if (word.contains("'") && !word.matches("'.+'.")) {
+//            isQuoteOpen = !isQuoteOpen;
+//        }
+//
+//        if (isParameter(word)) {
+//            var params = getParameter(word);
+//            if (params.contains("(") && params.contains(")")) {
+//                list.add(list.size() - 2, "(");
+//                list.add(")");
+//            } else {
+//                if (params.contains("(")) {
+//                    list.add(list.size() - 1, "(");
+//                } else {
+//                    list.add(")");
+//                }
+//                isBracketsOpen = !isBracketsOpen;
+//            }
+//        }
     }
 
     private int findFeatureIndex(List<Tuple<FeatureType, List<String>>> list, FeatureType current) {
