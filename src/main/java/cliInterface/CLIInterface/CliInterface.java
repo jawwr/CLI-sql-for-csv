@@ -1,5 +1,6 @@
 package cliInterface.CLIInterface;
 
+import cliInterface.commandHandler.CommandHandler;
 import cliInterface.tableDrawer.TableDrawer;
 import core.interpreter.Interpreter;
 import core.interpreter.SqlInterpreter;
@@ -14,7 +15,12 @@ public class CliInterface {
             try {
                 System.out.println("Input Query: ");
                 Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
-                var table = interpreter.interpret(scanner.nextLine());
+                String inputValue = scanner.nextLine();
+                if (inputValue.startsWith(":")){
+                    CommandHandler.handle(inputValue);
+                    continue;
+                }
+                var table = interpreter.interpret(inputValue);
                 TableDrawer.draw(table);
             } catch (IllegalArgumentException e) {
                 System.out.println("Error: " + e.getMessage());

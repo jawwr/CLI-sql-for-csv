@@ -1,22 +1,18 @@
 package core.repos;
 
+import core.utils.Constants;
+
 import java.io.File;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Writer implements FileWriter {
-    private final String path;
-
-    public Writer(String directory) {
-        this.path = directory;
-    }
-
     @Override
     public void writeFile(String[][] values, String fileName) {
         try {
             var value = convertToCsv(values);
-            var file = new File(path + File.separator + fileName + ".csv").toPath();
+            var file = new File(Constants.PATH + File.separator + fileName + ".csv").toPath();
             Files.write(file, value);
         } catch (Exception e) {
             e.printStackTrace();

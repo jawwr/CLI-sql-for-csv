@@ -11,13 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class TableRepo {
-    private static final FileReader reader;
-    private static final FileWriter writer;
-
-    static {
-        reader = new Reader(Constants.PATH);
-        writer = new Writer(Constants.PATH);
-    }
+    private static final FileReader reader = new Reader();
+    private static final FileWriter writer = new Writer();
 
     private static String[][] readFile(String fileName) {
         var values = reader.readFile(fileName);
