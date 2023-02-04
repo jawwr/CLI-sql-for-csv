@@ -90,7 +90,7 @@ select e.id, e.name, d.department_id, d.name from employees e join department d 
 | 5 |  12|    Jane|              3|      Sellers|
 +---+----+--------+---------------+-------------+
 Input Query:
-update employees set department_id = 2 where id = 5
+update employees set department_id = 2 where id = 12
 Complete!
 Input Query:
 select e.id, e.name, d.department_id, d.name from employees e join department d on e.department_id = d.department_id limit 5
