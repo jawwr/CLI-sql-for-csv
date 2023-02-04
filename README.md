@@ -1,7 +1,12 @@
 # SQL queries for CSV files
-- About
+- [About](https://github.com/jawwr/CLI-sql-for-csv#about)
+- [How to work with interpreter](https://github.com/jawwr/CLI-sql-for-csv#how-to-work-with-interpreter)
+    - [How to run the program](https://github.com/jawwr/CLI-sql-for-csv#how-to-run-the-program)
+    - [Available implemented features](https://github.com/jawwr/CLI-sql-for-csv#available-implemented-features)
+    - [Commands](https://github.com/jawwr/CLI-sql-for-csv#commands)
+- [Example](https://github.com/jawwr/CLI-sql-for-csv#example-1)
 # About
-This is CLI-program, interpreter SQL queries for CSV files. It helps to work with CSV files using SQL queries. 
+> This is CLI-program, interpreter SQL queries for CSV files. It helps to work with CSV files using SQL queries. 
 The program uses directory as DataBase and the CSV files as Table in DataBase. To use program without bugs and problems
 first row in CSV file should be the header and the following rows should be values and separated by the `;`
 #### For example
