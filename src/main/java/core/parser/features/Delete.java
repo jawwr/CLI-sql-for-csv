@@ -1,10 +1,8 @@
 package core.parser.features;
 
 import core.repos.TableRepo;
-import core.structure.Column;
 import core.structure.Table;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -12,35 +10,14 @@ import java.util.Objects;
 public class Delete implements Feature {
     @Override
     public Table parse(List<String> args, Table table) {
-        Table allTable = getAllTable(table.getName());
+        Table allTable = TableRepo.readTableFromCSV(table.getName());
         String[][] values = deleteValues(allTable.getValues(), table.getValues());
 
         allTable.setValues(values);
 
-        addValueInFile(values, allTable.getName(), allTable);
+        TableRepo.writeFile(allTable);
 
-        return allTable;
-    }
-
-    private void addValueInFile(String[][] values, String tableName, Table table) {
-        String[][] newValues = new String[values.length + 1][];
-        newValues[0] = getHeader(table);
-        System.arraycopy(values, 0, newValues, 1, values.length);
-        TableRepo.writeFile(newValues, tableName);
-    }
-
-    private String[] getHeader(Table table) {
-        var columns = table.getStructure().getColumnList();
-        List<String> columnName = new ArrayList<>();
-        for (Column column : columns) {
-            columnName.add(column.getName());
-        }
-
-        return columnName.toArray(new String[0]);
-    }
-
-    private Table getAllTable(String name) {
-        return TableRepo.readTableFromCSV(name);
+        return null;
     }
 
     private String[][] deleteValues(String[][] values, String[][] deleteValues) {

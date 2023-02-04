@@ -14,6 +14,6 @@ public class Drop implements Feature {
 
         TableRepo.deleteTable(args.get(1));
 
-        return table;
+        return null;
     }
 }

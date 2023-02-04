@@ -12,7 +12,7 @@ public class Insert implements Feature {
     @Override
     public Table parse(List<String> args, Table table) {
         String tableName = findTableName(args);
-        table = getAllTable(tableName);
+        table = TableRepo.readTableFromCSV(tableName);
         List<String> insertValues = getValues(args);
 
         if (isColumnListExist(args)) {
@@ -25,23 +25,15 @@ public class Insert implements Feature {
 
         table.setValues(values);
 
-        addValueInFile(table);
+        TableRepo.writeFile(table);
 
-        return table;
+        return null;
     }
 
     private void validateParameterCount(List<String> insertValues, TableStructure structure) {
         if (insertValues.size() != structure.getColumnList().size()) {
             throw new IllegalArgumentException("Invalid column count");
         }
-    }
-
-    private Table getAllTable(String name) {
-        return TableRepo.readTableFromCSV(name);
-    }
-
-    private void addValueInFile(Table table) {
-        TableRepo.writeFile(table.toCSV(), table.getName());
     }
 
     private String[][] addNewValue(String[][] values, String[] addValue) {

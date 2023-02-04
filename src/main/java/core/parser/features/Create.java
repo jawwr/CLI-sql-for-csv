@@ -29,18 +29,14 @@ public class Create implements Feature {
             createTable = createTable(args.get(1), getColumns(parameters, args.get(1)), new String[0][0]);
         }
 
-        createTableFile(createTable);
-        return createTable;
+        TableRepo.writeFile(createTable);
+        return null;
     }
 
     private Table createTable(String name, List<Column> columnList, String[][] values) {
         TableStructure structure = new TableStructure(columnList, name);
 
         return new Table(name, structure, values);
-    }
-
-    private void createTableFile(Table table) {
-        TableRepo.writeFile(table.toCSV(), table.getName());
     }
 
     private List<Column> getColumns(List<String> args, String tableName) {

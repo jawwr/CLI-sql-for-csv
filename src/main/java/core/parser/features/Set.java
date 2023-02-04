@@ -15,13 +15,9 @@ public class Set implements Feature {
         setValuesByArgs(table, args);
 
         updateTable(allTable, table, updateRowIndex);
-        addValueInFile(allTable);
+        TableRepo.writeFile(allTable);
 
-        return table;
-    }
-
-    private void addValueInFile(Table table) {
-        TableRepo.writeFile(table.toCSV(), table.getName());
+        return null;
     }
 
     private void setValuesByArgs(Table table, List<String> args) {

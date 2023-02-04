@@ -49,6 +49,10 @@ public class TableRepo {
         return Table.fromCSV(values, name);
     }
 
+    public static void writeFile(Table table){
+        writeFile(table.toCSV(), table.getName());
+    }
+
     public static void deleteTable(String tableName) {
         try {
             Files.delete(Path.of(Constants.PATH + File.separator + tableName + ".csv"));
