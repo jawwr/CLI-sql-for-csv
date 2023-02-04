@@ -67,16 +67,6 @@ public class Set implements Feature {
         return indexes;
     }
 
-    private int getRowIndex(String[][] values, String[] row) {
-        for (int i = 0; i < values.length; i++) {
-            if (Arrays.deepEquals(values[i], row)) {
-                return i;
-            }
-        }
-
-        return -1;
-    }
-
     private boolean isAvailableOperations(String operationName) {
         return operationName.equalsIgnoreCase("=");
     }

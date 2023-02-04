@@ -3,7 +3,7 @@ package cliInterface.commandHandler;
 public enum Commands {
     HELP(":h, :help", "Show all available commands"),
     CHANGE_DIRECTORY(":cd", "Change working directory"),
-    QUERY(":f, :feature", "Show all available feature");
+    QUERY(":f, :feature", "Show all available feature and their description");
 
     private final String command;
     private final String description;
