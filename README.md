@@ -6,8 +6,9 @@
     - [Commands](https://github.com/jawwr/CLI-sql-for-csv#commands)
 - [Example](https://github.com/jawwr/CLI-sql-for-csv#example-1)
 # About
-> This is CLI-program, interpreter SQL queries for CSV files. It helps to work with CSV files using SQL queries. 
-The program uses directory as DataBase and the CSV files as Table in DataBase. To use program without bugs and problems
+This is CLI-program, interpreter SQL queries for CSV files. It helps to work with CSV files using SQL queries. 
+The program uses directory as DataBase and the CSV files as Table in DataBase. 
+>To use program without bugs and problems
 first row in CSV file should be the header and the following rows should be values and separated by the `;`
 #### For example
 ```

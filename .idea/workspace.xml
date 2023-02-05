@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3508496a-680f-4fc2-a390-173976607910" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cliInterface/commandHandler/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cliInterface/commandHandler/Commands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/parser/features/Set.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/parser/features/Set.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +114,7 @@
       <workItem from="1675450632389" duration="60000" />
       <workItem from="1675451684407" duration="143000" />
       <workItem from="1675499569419" duration="4893000" />
-      <workItem from="1675512112207" duration="5193000" />
+      <workItem from="1675512112207" duration="6166000" />
     </task>
     <servers />
   </component>
